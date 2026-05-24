@@ -14,7 +14,7 @@ const stats = [
   { value: '5,000+', label: 'Students Guided' },
   { value: '15+',    label: 'Exam Streams' },
   { value: '100%',   label: 'Transparent Guidance' },
-  { value: '₹0',     label: 'Initial Consultation Fee' },
+  { value: 'FREE',   label: 'Always — No Hidden Fees' },
 ];
 
 const services = [
@@ -75,10 +75,10 @@ const streamAdvisory = [
 ];
 
 const feeItems = [
-  'Initial session: Complimentary',
-  'Subsequent sessions: Discussable',
-  'Package rates available for students',
-  'Concession for economically weaker sections',
+  'All individual consultancy sessions: Completely Free',
+  'No hidden charges, no registration fee, no session fee',
+  'No commitment required — consult as many times as needed',
+  'Available to every student regardless of financial background',
 ];
 
 export default function IndividualConsultancy() {
@@ -123,7 +123,7 @@ export default function IndividualConsultancy() {
           <div className="text-center reveal" style={{ marginBottom: '2.5rem' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>ALL SERVICES</div>
             <h2 className="section-title">What We Offer You</h2>
-            <p style={{ maxWidth: '580px', margin: '0 auto', color: 'var(--nex-grey-500)' }}>Every service below is available from the first complimentary session onwards.</p>
+            <p style={{ maxWidth: '580px', margin: '0 auto', color: 'var(--nex-grey-500)' }}>All services below are <strong>completely free</strong> for individual students and aspirants.</p>
           </div>
           <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: '0.75rem' }}>
             {services.map(s => (
@@ -243,7 +243,7 @@ export default function IndividualConsultancy() {
               { icon: <ShieldCheck size={20} />, title: 'Zero Commission', desc: 'Our advice is unconditionally in your interest.' },
               { icon: <Star size={20} />, title: 'Honest Advisory', desc: 'We tell you which college NOT to join — the advice most never get.' },
               { icon: <Zap size={20} />, title: 'Evidence-Based', desc: 'Every recommendation backed by data and cut-off trends.' },
-              { icon: <Users size={20} />, title: 'Inclusive Fees', desc: 'Income-sensitive — no student is turned away for financial reasons.' },
+              { icon: <Users size={20} />, title: 'Always Free', desc: 'Individual consultancy is completely free — every session, every time.' },
             ].map(p => (
               <div key={p.title} className="card reveal" style={{ padding: '1.5rem', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                 <div style={{ background: 'var(--nex-red-light)', borderRadius: '10px', padding: '0.6rem', color: 'var(--nex-red)', flexShrink: 0 }}>{p.icon}</div>
@@ -259,12 +259,13 @@ export default function IndividualConsultancy() {
 
       {/* Fee */}
       <section className="container" style={{ padding: '4rem 0', maxWidth: '600px', margin: '0 auto' }}>
-        <div className="card reveal text-center" style={{ padding: '3rem', border: '2px solid var(--nex-red)' }}>
-          <div style={{ background: 'var(--nex-red-light)', width: '64px', height: '64px', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'var(--nex-red)' }}>
-            <GraduationCap size={30} />
+        <div className="card reveal text-center" style={{ padding: '3rem', border: '2px solid var(--nex-red)', background: 'var(--nex-red-light)' }}>
+          <div style={{ background: 'var(--nex-red)', width: '72px', height: '72px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', color: 'white' }}>
+            <GraduationCap size={34} />
           </div>
-          <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>Fee Structure</h3>
-          <p style={{ color: 'var(--nex-grey-500)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>Flexible, income-sensitive, and agreed transparently before engagement begins.</p>
+          <div style={{ fontSize: '3rem', fontWeight: 900, color: 'var(--nex-red)', lineHeight: 1, marginBottom: '0.5rem' }}>FREE</div>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--nex-charcoal)' }}>Individual Consultancy is Completely Free</h3>
+          <p style={{ color: 'var(--nex-grey-500)', marginBottom: '1.75rem', fontSize: '0.95rem' }}>No session fees. No registration. No hidden charges. NexZen Foundation believes every student deserves the same quality of guidance — regardless of financial background.</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', textAlign: 'left' }}>
             {feeItems.map(f => (
               <div key={f} style={{ display: 'flex', gap: '0.6rem', alignItems: 'center' }}>

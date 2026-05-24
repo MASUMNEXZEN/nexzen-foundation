@@ -40,6 +40,7 @@ export default function ConsultancyLanding() {
                 <GraduationCap size={40} />
               </div>
               <h2 style={{ fontSize: '1.6rem', marginBottom: '0.75rem', color: 'var(--nex-charcoal)' }}>I am a Student / Individual</h2>
+              <div style={{ display: 'inline-block', background: 'var(--nex-red)', color: 'white', fontSize: '0.8rem', fontWeight: 800, padding: '0.25rem 0.9rem', borderRadius: '50px', marginBottom: '0.75rem', letterSpacing: '0.5px' }}>COMPLETELY FREE</div>
               <p style={{ color: 'var(--nex-grey-500)', fontSize: '1rem', lineHeight: 1.7, marginBottom: '2rem' }}>
                 Career mapping, college selection, board advisory, entrance exam strategy, scholarship guidance — personalised for your journey.
               </p>
