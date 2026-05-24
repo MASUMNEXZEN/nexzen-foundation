@@ -2475,3 +2475,160 @@ body { -webkit-tap-highlight-color: transparent; overscroll-behavior-x: none; }
 .main-content { padding-top: 80px; }
 @media (max-width: 768px) { .main-content { padding-top: 68px; } }
 @media (max-width: 360px)  { .main-content { padding-top: 64px; } }
+
+/* =====================================================
+   DARK MODE — Visibility Fixes
+   ===================================================== */
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* ── Base text ── */
+[data-theme="dark"] body { color: #d1d5db; }
+
+/* ── Cards ── */
+[data-theme="dark"] .card {
+  background: #18181f;
+  border-color: rgba(255,255,255,0.07);
+  color: #d1d5db;
+}
+[data-theme="dark"] .card h2,
+[data-theme="dark"] .card h3,
+[data-theme="dark"] .card h4,
+[data-theme="dark"] .card strong { color: #f3f4f6; }
+[data-theme="dark"] .card p,
+[data-theme="dark"] .card span { color: #9ca3af; }
+
+/* ── Pillar cards ── */
+[data-theme="dark"] .pillar-card { background: #18181f; border-color: rgba(255,255,255,0.07); }
+[data-theme="dark"] .pillar-card h3 { color: #f3f4f6; }
+[data-theme="dark"] .pillar-card p { color: #9ca3af; }
+
+/* ── Section headings ── */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 { color: #f3f4f6; }
+[data-theme="dark"] p { color: #9ca3af; }
+
+/* ── Stats strip ── */
+[data-theme="dark"] .stats-strip { background: #18181f; }
+[data-theme="dark"] .stat-item { background: transparent; }
+[data-theme="dark"] .stat-label { color: #6b7280; }
+[data-theme="dark"] .stat-item::after { background: rgba(255,255,255,0.08); }
+
+/* ── Section labels ── */
+[data-theme="dark"] .section-label { color: var(--nex-red); }
+[data-theme="dark"] .section-subtitle { color: #9ca3af; }
+
+/* ── Navbar ── */
+[data-theme="dark"] .navbar {
+  background: rgba(15,15,18,0.97);
+  border-bottom-color: rgba(255,255,255,0.07);
+}
+[data-theme="dark"] .nav-link { color: #d1d5db; }
+[data-theme="dark"] .nav-link:hover { color: var(--nex-red); background: var(--nex-red-glow); }
+[data-theme="dark"] .nav-hamburger span { background: #d1d5db; }
+
+/* ── Mobile nav overlay ── */
+[data-theme="dark"] .nav-links {
+  background: rgba(15,15,18,0.98) !important;
+}
+[data-theme="dark"] .nav-link {
+  border-bottom-color: rgba(255,255,255,0.07);
+}
+
+/* ── Dropdown menu ── */
+[data-theme="dark"] .nav-dropdown-menu {
+  background: #18181f;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+}
+[data-theme="dark"] .dropdown-item { color: #d1d5db; }
+[data-theme="dark"] .dropdown-item:hover { background: rgba(212,43,43,0.12); color: var(--nex-red); }
+[data-theme="dark"] .dropdown-item-title { color: #f3f4f6; }
+[data-theme="dark"] .dropdown-item-desc { color: #6b7280; }
+[data-theme="dark"] .dropdown-item-icon { background: rgba(212,43,43,0.15); }
+
+/* ── Announcement bar ── */
+[data-theme="dark"] .announcement-bar { background: #0f0f12; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+/* ── Grey sections (bg: grey-50) ── */
+[data-theme="dark"] section[style*="var(--nex-grey-50)"],
+[data-theme="dark"] .partner-strip { background: #111118; }
+[data-theme="dark"] [style*="background: var(--nex-grey-50)"],
+[data-theme="dark"] [style*="background:var(--nex-grey-50)"] { background: #111118 !important; }
+
+/* ── FAQ ── */
+[data-theme="dark"] .faq-item { background: #18181f; border-color: rgba(255,255,255,0.08); }
+[data-theme="dark"] .faq-item.open { border-color: var(--nex-red); }
+[data-theme="dark"] .faq-question { color: #f3f4f6; }
+[data-theme="dark"] .faq-answer p { color: #9ca3af; }
+
+/* ── Form elements ── */
+[data-theme="dark"] .form-input {
+  background: #1e1e28;
+  border-color: rgba(255,255,255,0.1);
+  color: #f3f4f6;
+}
+[data-theme="dark"] .form-input::placeholder { color: #6b7280; }
+[data-theme="dark"] .form-input:focus { border-color: var(--nex-red); background: #22222e; }
+[data-theme="dark"] .form-label { color: #d1d5db; }
+
+/* ── Donation amounts ── */
+[data-theme="dark"] .donation-amount-btn {
+  background: #1e1e28;
+  border-color: rgba(255,255,255,0.1);
+  color: #d1d5db;
+}
+[data-theme="dark"] .donation-amount-btn:hover,
+[data-theme="dark"] .donation-amount-btn.selected {
+  background: var(--nex-red);
+  border-color: var(--nex-red);
+  color: white;
+}
+
+/* ── Trust badges ── */
+[data-theme="dark"] .trust-badge {
+  background: rgba(212,43,43,0.1);
+  border-color: rgba(212,43,43,0.25);
+  color: #d1d5db;
+}
+
+/* ── Timeline ── */
+[data-theme="dark"] .timeline-title { color: #f3f4f6; }
+[data-theme="dark"] .timeline-text { color: #9ca3af; }
+[data-theme="dark"] .timeline-dot { background: #18181f; }
+
+/* ── Pledge cards ── */
+[data-theme="dark"] .pledge-card { background: #18181f; border-color: rgba(255,255,255,0.07); }
+[data-theme="dark"] .pledge-card h3 { color: #f3f4f6; }
+[data-theme="dark"] .pledge-card p { color: #9ca3af; }
+
+/* ── Footer links ── */
+[data-theme="dark"] .footer-link { color: #6b7280; }
+[data-theme="dark"] .footer-link:hover { color: white; }
+
+/* ── Page hero ── */
+[data-theme="dark"] .page-hero-overlay {
+  background: linear-gradient(135deg, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 100%);
+}
+
+/* ── Scrollbar ── */
+[data-theme="dark"] ::-webkit-scrollbar-track { background: #0f0f12; }
+
+/* ── District cards ── */
+[data-theme="dark"] .district-card { background: #18181f; border-color: rgba(255,255,255,0.07); }
+
+/* ── Map embed ── */
+[data-theme="dark"] .map-embed { filter: invert(0.9) hue-rotate(180deg) contrast(0.9) saturate(0.8); }
+
+/* ── Select elements ── */
+[data-theme="dark"] select.form-input { color-scheme: dark; }
+
+/* ── Footer bottom ── */
+[data-theme="dark"] .footer-bottom { color: #6b7280; }
+[data-theme="dark"] .footer-text { color: #6b7280; }
+[data-theme="dark"] .footer-tagline { color: #6b7280; }

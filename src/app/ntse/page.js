@@ -36,7 +36,7 @@ const SCHOOL_STEPS = [
   { n: '02', action: 'Sign the MoU', detail: 'The Principal or authorised representative signs the formal academic partnership agreement with Nexzen Foundation.' },
   { n: '03', action: 'Designate a Nodal Teacher', detail: 'Appoint a Single Point of Contact (SPOC) for all NTSE coordination — registration, logistics, and communication.' },
   { n: '04', action: 'Register Students', detail: 'Register eligible students from Classes II to IX. Ensure accuracy of all student data before the deadline.' },
-  { n: '05', action: 'Collect & Remit Fees', detail: 'Collect ₹249/- per student from parents and remit the full amount to the Foundation within 7 working days of the registration deadline.' },
+  { n: '05', action: 'Collect Fees', detail: 'Collect ₹249/- per student from parents. Keep records of all fee receipts issued to parents.' },
   { n: '06', action: 'Obtain Parental Consent', detail: 'Collect written parental/guardian consent for all participating students before the examination date.' },
   { n: '07', action: 'Conduct the Examination', detail: 'Receive question papers from the Foundation. Conduct the examination at school premises as per guidelines.' },
   { n: '08', action: 'Hand Over Materials', detail: 'Securely hand over all answer sheets and unused materials to the Foundation\'s authorised representative.' },
@@ -433,10 +433,9 @@ export default function NTSEPage() {
                 <h3 style={{ color:'white', marginBottom:'2rem', fontSize:'1.3rem', display:'flex', alignItems:'center', gap:'0.5rem' }}>
                   <Shield size={22} color="#34D399"/> Fee Structure — Zero Risk to Your School
                 </h3>
-                <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:'1.25rem' }}>
+                <div style={{ display:'flex', justifyContent:'center' }}>
                   {[
-                    { label:'Registration Fee', value:'₹249/- per student', sub:'Collected from parents', color:'rgba(255,255,255,0.8)' },
-                    { label:'Remit to Foundation', value:'₹249/- per student', sub:'Full amount, within 7 working days', color:'#34D399' },
+                    { label:'Registration Fee', value:'₹249/- per student', sub:'Collected from parents', color:'#34D399' },
                   ].map(f => (
                     <div key={f.label} style={{ background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.1)', borderRadius:'var(--radius-md)', padding:'1.25rem', textAlign:'center' }}>
                       <div style={{ fontSize:'0.78rem', color:'rgba(255,255,255,0.4)', textTransform:'uppercase', letterSpacing:'0.5px', marginBottom:'0.5rem' }}>{f.label}</div>
@@ -521,8 +520,7 @@ export default function NTSEPage() {
               { topic:'Exam Tiers',        detail:'4 Tiers: School → District/Zonal → Regional → State' },
               { topic:'Negative Marking',  detail:'None' },
               { topic:'Medium',            detail:'Bilingual — English & Bengali' },
-              { topic:'Registration Fee',  detail:'₹249/- per student (collected from parents)' },
-              { topic:'Remittance',        detail:'₹249/- per student to Foundation within 7 working days' },
+              { topic:'Registration Fee',  detail:'₹249/- per student (collected from parents by school)' },
               { topic:'Scholarships',      detail:'Top 5 students per class at State Level (up to 40 total)' },
               { topic:'MoU Validity',      detail:'Academic Year 2026–2027 (non-exclusive)' },
               { topic:'Jurisdiction',      detail:'Kolkata, West Bengal · Laws of India' },
