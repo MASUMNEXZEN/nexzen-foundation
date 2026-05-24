@@ -23,7 +23,7 @@ const SUBJECTS = [
 ];
 
 const SCHOOL_BENEFITS = [
-  { icon: <Shield size={22} color="#059669"/>, title: 'Zero Financial Risk', desc: 'Your school retains Rs.50 per student registered. No investment, no risk — only upside.' },
+  { icon: <Shield size={22} color="#059669"/>, title: 'Zero Financial Risk', desc: 'No upfront investment from your school. The Foundation manages all financial arrangements directly.' },
   { icon: <Trophy size={22} color="#D42B2B"/>,  title: 'School Prestige',    desc: 'Merit lists, medals, and state-level recognition put your institution on the academic map.' },
   { icon: <FileText size={22} color="#6366F1"/>,title: 'Full Support',       desc: 'Question papers, evaluation, results, certificates, and scholarships — all managed by us.' },
   { icon: <Award size={22} color="#F97316"/>,   title: 'Student Recognition',desc: 'Every participant receives a certificate. Toppers receive medals and cash scholarships.' },
@@ -36,7 +36,7 @@ const SCHOOL_STEPS = [
   { n: '02', action: 'Sign the MoU', detail: 'The Principal or authorised representative signs the formal academic partnership agreement with Nexzen Foundation.' },
   { n: '03', action: 'Designate a Nodal Teacher', detail: 'Appoint a Single Point of Contact (SPOC) for all NTSE coordination — registration, logistics, and communication.' },
   { n: '04', action: 'Register Students', detail: 'Register eligible students from Classes II to IX. Ensure accuracy of all student data before the deadline.' },
-  { n: '05', action: 'Collect & Remit Fees', detail: 'Collect ₹249/- per student. Retain your ₹50 administrative share. Remit ₹199/- per student within 7 working days.' },
+  { n: '05', action: 'Collect & Remit Fees', detail: 'Collect ₹249/- per student from parents and remit the full amount to the Foundation within 7 working days of the registration deadline.' },
   { n: '06', action: 'Obtain Parental Consent', detail: 'Collect written parental/guardian consent for all participating students before the examination date.' },
   { n: '07', action: 'Conduct the Examination', detail: 'Receive question papers from the Foundation. Conduct the examination at school premises as per guidelines.' },
   { n: '08', action: 'Hand Over Materials', detail: 'Securely hand over all answer sheets and unused materials to the Foundation\'s authorised representative.' },
@@ -54,7 +54,7 @@ const STUDENT_FAQS = [
 ];
 
 const SCHOOL_FAQS = [
-  { q: 'Does our school need to pay anything?', a: 'No. There is zero financial risk. The school collects ₹249 per student and retains ₹50 as administrative expenses. Only ₹199 per student is remitted to the Foundation.' },
+  { q: 'Does our school need to pay anything?', a: 'No. There is absolutely zero financial risk to your school. The registration fee of ₹249 per student is collected from parents and remitted directly to the Foundation. Your school bears no cost whatsoever.' },
   { q: 'What is the minimum number of students required?', a: 'A minimum of 10 students per class is mandatory for a class to be included in the examination.' },
   { q: "Will this affect our school's existing affiliations?", a: 'Not at all. The MoU is non-exclusive. Your school may retain all existing affiliations, partnerships, and board registrations.' },
   { q: 'Who manages the examination?', a: 'The Foundation manages everything — question papers, evaluation, results, certificates, medals, and scholarship disbursement. The school only needs to conduct the Tier 1 (School Level) examination at its premises.' },
@@ -436,8 +436,7 @@ export default function NTSEPage() {
                 <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(200px,1fr))', gap:'1.25rem' }}>
                   {[
                     { label:'Registration Fee', value:'₹249/- per student', sub:'Collected from parents', color:'rgba(255,255,255,0.8)' },
-                    { label:'School Retains',   value:'₹50/- per student', sub:'Your administrative share', color:'#34D399' },
-                    { label:'Remit to Foundation', value:'₹199/- per student', sub:'Within 7 working days', color:'#FF6B6B' },
+                    { label:'Remit to Foundation', value:'₹249/- per student', sub:'Full amount, within 7 working days', color:'#34D399' },
                   ].map(f => (
                     <div key={f.label} style={{ background:'rgba(255,255,255,0.05)', border:'1px solid rgba(255,255,255,0.1)', borderRadius:'var(--radius-md)', padding:'1.25rem', textAlign:'center' }}>
                       <div style={{ fontSize:'0.78rem', color:'rgba(255,255,255,0.4)', textTransform:'uppercase', letterSpacing:'0.5px', marginBottom:'0.5rem' }}>{f.label}</div>
@@ -522,9 +521,8 @@ export default function NTSEPage() {
               { topic:'Exam Tiers',        detail:'4 Tiers: School → District/Zonal → Regional → State' },
               { topic:'Negative Marking',  detail:'None' },
               { topic:'Medium',            detail:'Bilingual — English & Bengali' },
-              { topic:'Registration Fee',  detail:'₹249/- per student' },
-              { topic:'School Retains',    detail:'₹50/- per student (administrative expenses)' },
-              { topic:'Remittance',        detail:'₹199/- per student within 7 working days' },
+              { topic:'Registration Fee',  detail:'₹249/- per student (collected from parents)' },
+              { topic:'Remittance',        detail:'₹249/- per student to Foundation within 7 working days' },
               { topic:'Scholarships',      detail:'Top 5 students per class at State Level (up to 40 total)' },
               { topic:'MoU Validity',      detail:'Academic Year 2026–2027 (non-exclusive)' },
               { topic:'Jurisdiction',      detail:'Kolkata, West Bengal · Laws of India' },
