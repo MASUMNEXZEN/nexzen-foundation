@@ -127,7 +127,7 @@ export default function Donate() {
                 )}
               </div>
 
-              <RazorpayButton amount={selectedAmount} />
+              <RazorpayButton />
             </div>
 
             {/* Bank Transfer */}
