@@ -4,176 +4,177 @@ import { Heart } from 'lucide-react';
 
 /* ─── Generate & download a professional PDF receipt ─── */
 async function generateReceipt({ paymentId, amountRupees, date }) {
-  // Dynamically import jsPDF (client-side only)
   const { jsPDF } = await import('jspdf');
   const doc = new jsPDF({ unit: 'mm', format: 'a4' });
 
   const W = doc.internal.pageSize.getWidth();
   const H = doc.internal.pageSize.getHeight();
 
-  // ── Brand colours ──
-  const RED    = [212, 43, 43];
-  const DARK   = [30, 30, 30];
-  const GREY   = [100, 100, 100];
-  const LGREY  = [240, 240, 240];
-  const WHITE  = [255, 255, 255];
-  const TEAL   = [0, 128, 128];
+  const RED   = [212, 43, 43];
+  const DARK  = [30, 30, 30];
+  const GREY  = [110, 110, 110];
+  const LGREY = [235, 235, 235];
+  const WHITE = [255, 255, 255];
+  const TEAL  = [0, 120, 120];
 
   // ── Header band ──
   doc.setFillColor(...RED);
-  doc.rect(0, 0, W, 38, 'F');
+  doc.rect(0, 0, W, 40, 'F');
 
-  // Try to embed the logo
   try {
     const resp = await fetch('/images/logo.png');
     const blob = await resp.blob();
     const reader = new FileReader();
-    await new Promise(resolve => {
-      reader.onloadend = resolve;
-      reader.readAsDataURL(blob);
-    });
-    // Place logo (white bg pill behind it)
+    await new Promise(resolve => { reader.onloadend = resolve; reader.readAsDataURL(blob); });
     doc.setFillColor(...WHITE);
-    doc.roundedRect(10, 6, 36, 26, 4, 4, 'F');
-    doc.addImage(reader.result, 'PNG', 12, 8, 32, 22);
+    doc.roundedRect(10, 7, 36, 26, 4, 4, 'F');
+    doc.addImage(reader.result, 'PNG', 12, 9, 32, 22);
   } catch (_) {
-    // Fallback: text logo
-    doc.setFontSize(14);
-    doc.setTextColor(...WHITE);
-    doc.setFont('helvetica', 'bold');
-    doc.text('NexZen', 14, 18);
-    doc.text('Foundation', 14, 25);
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(13); doc.setTextColor(...WHITE);
+    doc.text('NexZen', 14, 18); doc.text('Foundation', 14, 26);
   }
 
-  // ── Foundation name & tagline in header ──
   doc.setTextColor(...WHITE);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(18);
-  doc.text('NexZen Foundation', 54, 18);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.text('Empowering Communities Through Education, Healthcare & Social Development', 54, 25);
-  doc.setFontSize(8);
-  doc.text('Reg: IV-1901-01209-2025  |  NGO Darpan: WB/2025/0892907  |  80G: AAFTN1149JF20261', 54, 32);
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(18);
+  doc.text('NexZen Foundation', 54, 19);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9);
+  doc.text('Empowering Communities Through Education, Healthcare & Social Development', 54, 27);
+  doc.setFontSize(7.5);
+  doc.text('Reg: IV-1901-01209-2025  |  NGO Darpan: WB/2025/0892907  |  80G: AAFTN1149JF20261', 54, 35);
 
-  // ── DONATION RECEIPT title ──
-  doc.setFillColor(...LGREY);
-  doc.rect(0, 38, W, 14, 'F');
-  doc.setTextColor(...DARK);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(15);
-  doc.text('DONATION RECEIPT', W / 2, 47, { align: 'center' });
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.setTextColor(...GREY);
-  doc.text(`Date: ${date}`, W / 2, 53, { align: 'center' });
-
-  // ── Receipt detail card ──
-  let y = 68;
-  const cardX = 18;
-  const cardW = W - 36;
-
-  // Card border
+  // ── Title strip ──
+  doc.setFillColor(248, 248, 248);
+  doc.rect(0, 40, W, 18, 'F');
   doc.setDrawColor(...LGREY);
+  doc.line(0, 58, W, 58);
+  doc.setTextColor(...DARK);
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(14);
+  doc.text('DONATION RECEIPT', W / 2, 51, { align: 'center' });
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(...GREY);
+  doc.text(`Date: ${date}`, W / 2, 57, { align: 'center' });
+
+  // ── Detail card ──
+  const cardX = 16, cardW = W - 32;
+  let y = 66;
+
+  // Amount in words
+  const words = toIndianWords(Number(amountRupees));
+  const formatted = `Rs. ${Number(amountRupees).toLocaleString('en-IN')}`;
+
+  // Card background
   doc.setFillColor(252, 252, 252);
-  doc.roundedRect(cardX, y - 6, cardW, 62, 3, 3, 'FD');
-
-  // Red left accent
+  doc.setDrawColor(...LGREY);
+  doc.roundedRect(cardX, y, cardW, 78, 3, 3, 'FD');
   doc.setFillColor(...RED);
-  doc.rect(cardX, y - 6, 3, 62, 'F');
+  doc.rect(cardX, y, 3, 78, 'F');
 
-  const rowY = (n) => y + n * 13;
-  const drawRow = (label, value, n, highlight = false) => {
-    doc.setFontSize(9);
-    doc.setTextColor(...GREY);
-    doc.setFont('helvetica', 'normal');
-    doc.text(label, cardX + 10, rowY(n));
-
-    doc.setFontSize(highlight ? 14 : 11);
-    doc.setFont('helvetica', 'bold');
-    doc.setTextColor(highlight ? RED[0] : DARK[0], highlight ? RED[1] : DARK[1], highlight ? RED[2] : DARK[2]);
-    doc.text(value, cardX + 10, rowY(n) + 6);
+  const label = (txt, yy) => {
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...GREY);
+    doc.text(txt, cardX + 10, yy);
+  };
+  const value = (txt, yy, color = DARK, size = 11) => {
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(size);
+    doc.setTextColor(color[0], color[1], color[2]);
+    doc.text(txt, cardX + 10, yy);
   };
 
-  drawRow('Payment / Transaction ID', paymentId, 0);
-  drawRow('Amount Donated', `\u20b9 ${Number(amountRupees).toLocaleString('en-IN')}`, 1, true);
-  drawRow('Donated To', 'NexZen Foundation', 2);
-  drawRow('Purpose', 'Charitable Donation — Education & Social Development', 3);
+  label('Payment / Transaction ID', y + 10);
+  value(paymentId, y + 17);
 
-  y += 70;
+  // Separator line
+  doc.setDrawColor(...LGREY);
+  doc.line(cardX + 8, y + 22, cardX + cardW - 8, y + 22);
 
-  // ── Thank-you message ──
-  doc.setFillColor(255, 245, 245);
-  doc.setDrawColor(...RED);
+  label('Amount Donated', y + 30);
+  value(formatted, y + 38, RED, 15);
+  doc.setFont('helvetica', 'italic'); doc.setFontSize(9); doc.setTextColor(...GREY);
+  doc.text(`(${words})`, cardX + 10, y + 46);
+
+  doc.setDrawColor(...LGREY);
+  doc.line(cardX + 8, y + 50, cardX + cardW - 8, y + 50);
+
+  label('Donated To', y + 58);
+  value('NexZen Foundation', y + 65);
+
+  label('Purpose', y + 72);
+  value('Charitable Donation - Education & Social Development', y + 78, DARK, 9);
+
+  y += 88;
+
+  // ── Thank You section ──
+  doc.setFillColor(255, 246, 246);
+  doc.setDrawColor(220, 150, 150);
   doc.roundedRect(cardX, y, cardW, 26, 3, 3, 'FD');
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(11);
-  doc.setTextColor(...RED);
-  doc.text('\u2764  Thank You for Your Generosity!', cardX + 8, y + 10);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.setTextColor(...DARK);
+  doc.setFillColor(...RED);
+  doc.rect(cardX, y, 3, 26, 'F');
+
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(11); doc.setTextColor(...RED);
+  doc.text('Thank You for Your Generosity!', cardX + 10, y + 10);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(...DARK);
   doc.text(
     'Your donation directly empowers students, patients, and communities across West Bengal.',
-    cardX + 8, y + 19,
-    { maxWidth: cardW - 16 }
+    cardX + 10, y + 19, { maxWidth: cardW - 20 }
   );
 
-  y += 36;
+  y += 35;
 
   // ── 80G section ──
-  doc.setFillColor(240, 255, 255);
-  doc.setDrawColor(...TEAL);
-  doc.roundedRect(cardX, y, cardW, 36, 3, 3, 'FD');
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.setTextColor(TEAL[0], TEAL[1], TEAL[2]);
-  doc.text('80G Tax Exemption Receipt', cardX + 8, y + 10);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.setTextColor(...DARK);
+  doc.setFillColor(241, 254, 254);
+  doc.setDrawColor(150, 200, 200);
+  doc.roundedRect(cardX, y, cardW, 40, 3, 3, 'FD');
+  doc.setFillColor(TEAL[0], TEAL[1], TEAL[2]);
+  doc.rect(cardX, y, 3, 40, 'F');
+
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor(TEAL[0], TEAL[1], TEAL[2]);
+  doc.text('80G Tax Exemption Receipt', cardX + 10, y + 10);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(...DARK);
   doc.text(
-    'To receive your official 80G tax exemption receipt (Form 10BE), please email us\nyour Full Name, PAN Number, and Postal Address at:',
-    cardX + 8, y + 18,
-    { maxWidth: cardW - 16 }
+    'To receive your official 80G tax exemption receipt (Form 10BE), please email us your\nFull Name, PAN Number, and Postal Address at:',
+    cardX + 10, y + 19, { maxWidth: cardW - 20 }
   );
-  doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...RED);
-  doc.setFontSize(10);
-  doc.text('donation@nexzenfoundation.in', cardX + 8, y + 31);
+  doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor(...RED);
+  doc.text('donation@nexzenfoundation.in', cardX + 10, y + 34);
 
-  y += 46;
+  y += 50;
 
-  // ── Divider ──
+  // ── Legal strip ──
   doc.setDrawColor(...LGREY);
   doc.line(cardX, y, cardX + cardW, y);
-  y += 8;
+  y += 7;
 
-  // ── Legal / trust info ──
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
-  doc.setTextColor(...GREY);
-  const trustLines = [
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(...GREY);
+  [
     'NexZen Foundation is a registered charitable trust under the Indian Trusts Act.',
-    'Registration No: IV-1901-01209-2025  |  NGO Darpan ID: WB/2025/0892907  |  80G Certificate: AAFTN1149JF20261',
+    'Reg No: IV-1901-01209-2025  |  NGO Darpan: WB/2025/0892907  |  80G Cert: AAFTN1149JF20261',
     'This is a computer-generated receipt and does not require a physical signature.',
-  ];
-  trustLines.forEach((line, i) => {
-    doc.text(line, W / 2, y + i * 5.5, { align: 'center' });
-  });
+  ].forEach((line, i) => doc.text(line, W / 2, y + i * 5, { align: 'center' }));
 
-  // ── Footer band ──
+  // ── Footer ──
   doc.setFillColor(...RED);
   doc.rect(0, H - 14, W, 14, 'F');
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8);
-  doc.setTextColor(...WHITE);
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(8); doc.setTextColor(...WHITE);
   doc.text('www.nexzenfoundation.in  |  donation@nexzenfoundation.in', W / 2, H - 6, { align: 'center' });
 
-  // ── Save ──
   doc.save(`NexZen_Donation_Receipt_${paymentId}.pdf`);
 }
 
+/* ─── Convert number to Indian words ─── */
+function toIndianWords(n) {
+  if (n === 0) return 'Zero Rupees Only';
+  const ones = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
+    'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen',
+    'Seventeen', 'Eighteen', 'Nineteen'];
+  const tens = ['', '', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety'];
+  const two = n => n < 20 ? ones[n] : tens[Math.floor(n / 10)] + (n % 10 ? ' ' + ones[n % 10] : '');
+  const three = n => n >= 100 ? ones[Math.floor(n / 100)] + ' Hundred' + (n % 100 ? ' ' + two(n % 100) : '') : two(n);
+
+  let r = '', rem = n;
+  if (rem >= 10000000) { r += three(Math.floor(rem / 10000000)) + ' Crore '; rem %= 10000000; }
+  if (rem >= 100000)   { r += three(Math.floor(rem / 100000))   + ' Lakh ';  rem %= 100000;  }
+  if (rem >= 1000)     { r += three(Math.floor(rem / 1000))     + ' Thousand '; rem %= 1000; }
+  if (rem > 0)         { r += three(rem); }
+  return r.trim() + ' Rupees Only';
+}
 
 /* ─── Main Component ─── */
 export default function RazorpayButton({ amount }) {
