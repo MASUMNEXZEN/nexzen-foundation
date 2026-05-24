@@ -150,11 +150,16 @@ function StickyDonateBar() {
   );
 }
 
+/* ─── NAV CONSULTANCY ─── */
+const consultancyLinks = [
+  { href: '/consultancy/individual', icon: <GraduationCap size={18} />, title: 'For Individuals', desc: 'Students · Career · College Advisory' },
+  { href: '/consultancy/institutional', icon: <Building2 size={18} />, title: 'For Institutions', desc: 'Schools · Digital · Compliance' },
+];
+
 /* ─── NAV PROGRAMMES ─── */
 const programmes = [
   { href: '/programmes/scholarships', icon: <GraduationCap size={18} />, title: 'Scholarships', desc: 'Savitri Bai Phule & NTSE' },
   { href: '/programmes/ipec', icon: <Building2 size={18} />, title: 'IPEC', desc: 'Professional Colleges' },
-  { href: '/programmes/consultancy', icon: <BookOpen size={18} />, title: 'Consultancy', desc: 'Academic Guidance' },
   { href: '/programmes/healthcare', icon: <HeartPulse size={18} />, title: 'Healthcare', desc: 'Community Health Camps' },
   { href: '/programmes/social-services', icon: <HeartHandshake size={18} />, title: 'Social Services', desc: 'Welfare & Relief' },
   { href: '/programmes/school-upgradation', icon: <School size={18} />, title: 'Smart Bangla Classroom', desc: 'NEP 2020 · SDG 4 Aligned' },
@@ -191,6 +196,22 @@ function Navbar() {
         <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
           <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>Home</Link>
           <Link href="/about" className={`nav-link ${pathname === '/about' ? 'active' : ''}`}>About</Link>
+
+          {/* Consultancy — top-level dropdown */}
+          <div className="nav-item-dropdown">
+            <Link href="/consultancy" className={`nav-link ${pathname.startsWith('/consultancy') ? 'active' : ''}`}>Consultancy</Link>
+            <div className="nav-dropdown-menu">
+              {consultancyLinks.map(c => (
+                <Link key={c.href} href={c.href} className="dropdown-item">
+                  <div className="dropdown-item-icon">{c.icon}</div>
+                  <div>
+                    <div className="dropdown-item-title">{c.title}</div>
+                    <div className="dropdown-item-desc">{c.desc}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
 
           <div className="nav-item-dropdown">
             <Link href="/programmes" className={`nav-link ${pathname.startsWith('/programmes') ? 'active' : ''}`}>Programmes</Link>
