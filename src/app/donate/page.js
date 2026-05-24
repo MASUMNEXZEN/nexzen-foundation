@@ -51,7 +51,8 @@ export default function Donate() {
 
   useEffect(() => { setTimeout(() => setPct(pctRaised()), 400); }, []);
 
-  const amounts = mode === 'once' ? ['₹500','₹1,000','₹5,000','₹10,000'] : ['₹100','₹250','₹500','₹1,000'];
+  const amounts = mode === 'once' ? ['₹500','₹1,000','₹5,000','₹10,000'] : ['₹99','₹249','₹499','₹999'];
+
   const tiers   = mode === 'once' ? donationTiers : monthlyTiers;
 
   const finalAmount = selectedAmount === 'custom'
