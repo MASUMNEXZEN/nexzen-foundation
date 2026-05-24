@@ -225,7 +225,6 @@ const consultancyLinks = [
 
 /* ─── NAV PROGRAMMES ─── */
 const programmes = [
-  { href: '/ntse', icon: <GraduationCap size={18} />, title: 'NTSE 2026', desc: 'Talent Search Examination' },
   { href: '/programmes/scholarships', icon: <GraduationCap size={18} />, title: 'Scholarships', desc: 'Savitri Bai Phule & NTSE' },
   { href: '/programmes/ipec', icon: <Building2 size={18} />, title: 'IPEC', desc: 'Professional Colleges' },
   { href: '/programmes/healthcare', icon: <HeartPulse size={18} />, title: 'Healthcare', desc: 'Community Health Camps' },
@@ -296,6 +295,10 @@ function Navbar() {
             </div>
           </div>
 
+          <Link href="/ntse" className={`nav-link ${pathname === '/ntse' ? 'active' : ''}`}
+            style={{ position: 'relative', fontWeight: 700, color: pathname === '/ntse' ? 'var(--nex-red)' : 'var(--nex-red)', display: 'flex', alignItems: 'center', gap: '5px' }}>
+            <span style={{ background: 'var(--nex-red)', color: 'white', fontSize: '0.68rem', fontWeight: 800, padding: '2px 8px', borderRadius: '50px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>NTSE 2026</span>
+          </Link>
           <Link href="/leadership" className={`nav-link ${pathname === '/leadership' ? 'active' : ''}`}>Leadership</Link>
           <Link href="/gallery" className={`nav-link ${pathname === '/gallery' ? 'active' : ''}`}>Gallery</Link>
           <Link href="/transparency" className={`nav-link ${pathname === '/transparency' ? 'active' : ''}`}>Transparency</Link>
