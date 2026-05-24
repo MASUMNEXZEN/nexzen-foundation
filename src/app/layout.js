@@ -17,9 +17,76 @@ export default function RootLayout({ children }) {
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <title>NexZen Foundation | Empowering Communities, Transforming Futures</title>
-        <meta name="description" content="NexZen Foundation is a registered charitable trust empowering rural West Bengal through education, healthcare, and community development." />
+
+        {/* Primary SEO */}
+        <title>NexZen Foundation | Empowering Communities in West Bengal</title>
+        <meta name="description" content="NexZen Foundation is a registered NGO in West Bengal offering free career consultancy, scholarships, healthcare camps, and institutional development. Trust Reg: IV-1901-01209-2025 | 80G Certified." />
+        <meta name="keywords" content="NexZen Foundation, NGO West Bengal, free career counselling West Bengal, educational NGO Kolkata, scholarship West Bengal, NEET guidance West Bengal, nursing college advisory, 80G donation India, charitable trust West Bengal" />
+        <meta name="author" content="NexZen Foundation" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        <link rel="canonical" href="https://www.nexzenfoundation.in" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="NexZen Foundation" />
+        <meta property="og:title" content="NexZen Foundation | Empowering Communities in West Bengal" />
+        <meta property="og:description" content="Free career consultancy, scholarships, healthcare camps, and institutional development for West Bengal. 80G certified charitable trust." />
+        <meta property="og:url" content="https://www.nexzenfoundation.in" />
+        <meta property="og:image" content="https://www.nexzenfoundation.in/images/og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="NexZen Foundation — Empowering Communities in West Bengal" />
+        <meta property="og:locale" content="en_IN" />
+
+        {/* Twitter / X Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="NexZen Foundation | Empowering Communities in West Bengal" />
+        <meta name="twitter:description" content="Free career consultancy, scholarships, healthcare camps. 80G certified NGO, West Bengal." />
+        <meta name="twitter:image" content="https://www.nexzenfoundation.in/images/og-image.jpg" />
+
+        {/* Favicon */}
         <link rel="icon" href="/images/logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/images/logo.png" />
+
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+
+        {/* JSON-LD — NGO Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "NGO",
+            "name": "NexZen Foundation",
+            "alternateName": "NexZen",
+            "url": "https://www.nexzenfoundation.in",
+            "logo": "https://www.nexzenfoundation.in/images/logo.png",
+            "image": "https://www.nexzenfoundation.in/images/og-image.jpg",
+            "description": "NexZen Foundation is a registered charitable trust in West Bengal offering free career consultancy, scholarships, healthcare camps, and institutional development.",
+            "foundingDate": "2025",
+            "address": {
+              "@type": "PostalAddress",
+              "addressRegion": "West Bengal",
+              "addressCountry": "IN"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "admin@nexzenfoundation.in",
+              "contactType": "customer service"
+            },
+            "sameAs": [
+              "https://www.nexzenfoundation.in"
+            ],
+            "knowsAbout": [
+              "Career Counselling", "Educational Consultancy", "Scholarship Guidance",
+              "Healthcare", "NEET Guidance", "WBJEE Strategy", "Institutional Development"
+            ],
+            "nonprofitStatus": "Nonprofit501c3",
+            "taxID": "AAFTN1149JF20261"
+          })}}
+        />
+
       </head>
       <body>
         <ScrollProgressBar />
@@ -263,13 +330,13 @@ function Footer() {
           </div>
           <div>
             <h4>Quick Links</h4>
-            {[['About Us', '/about'], ['Our Programmes', '/programmes'], ['Leadership', '/leadership'], ['Gallery', '/gallery'], ['Transparency', '/transparency']].map(([l, h]) => (
+            {[['About Us', '/about'], ['Our Programmes', '/programmes'], ['Volunteer', '/volunteer'], ['FAQ', '/faq'], ['Leadership', '/leadership'], ['Transparency', '/transparency']].map(([l, h]) => (
               <Link key={h} href={h} className="footer-link">{l}</Link>
             ))}
           </div>
           <div>
             <h4>Programmes</h4>
-            {[['Scholarships', '/programmes/scholarships'], ['IPEC', '/programmes/ipec'], ['Consultancy', '/programmes/consultancy'], ['Healthcare', '/programmes/healthcare'], ['Social Services', '/programmes/social-services'], ['Smart Bangla Classroom', '/programmes/school-upgradation']].map(([l, h]) => (
+            {[['Free Consultancy', '/consultancy'], ['For Individuals', '/consultancy/individual'], ['For Institutions', '/consultancy/institutional'], ['Scholarships', '/programmes/scholarships'], ['Healthcare', '/programmes/healthcare'], ['Smart Bangla Classroom', '/programmes/school-upgradation']].map(([l, h]) => (
               <Link key={h} href={h} className="footer-link">{l}</Link>
             ))}
           </div>

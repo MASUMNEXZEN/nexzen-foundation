@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { Heart } from 'lucide-react';
+import { Heart, RefreshCw } from 'lucide-react';
 
 /* ─── Generate & download a professional PDF receipt ─── */
 async function generateReceipt({ paymentId, amountRupees, date }) {
@@ -177,7 +177,7 @@ function toIndianWords(n) {
 }
 
 /* ─── Main Component ─── */
-export default function RazorpayButton({ amount }) {
+export default function RazorpayButton({ amount, mode = 'once' }) {
   const scriptLoaded = useRef(false);
 
   useEffect(() => {
@@ -211,25 +211,33 @@ export default function RazorpayButton({ amount }) {
       amount: amountInPaise,
       currency: 'INR',
       name: 'NexZen Foundation',
-      description: 'Charitable Donation',
+      description: mode === 'monthly' ? 'Monthly Recurring Donation' : 'Charitable Donation',
       image: '/images/logo.png',
       notes: {
-        purpose: 'Charitable Donation',
+        purpose: mode === 'monthly' ? 'Monthly Recurring Charitable Donation' : 'Charitable Donation',
         trust_reg: 'IV-1901-01209-2025',
         '80g_cert': 'AAFTN1149JF20261',
+        donation_type: mode,
       },
       theme: { color: '#D42B2B' },
       handler: function (response) {
-        // Generate & auto-download PDF receipt
         const now = new Date();
         const date = now.toLocaleDateString('en-IN', {
           day: '2-digit', month: 'long', year: 'numeric',
         });
-        generateReceipt({
-          paymentId: response.razorpay_payment_id,
-          amountRupees: numericRupees,
-          date,
-        });
+        // Generate + download PDF receipt
+        generateReceipt({ paymentId: response.razorpay_payment_id, amountRupees: numericRupees, date });
+
+        // WhatsApp share prompt after short delay
+        setTimeout(() => {
+          const msg = encodeURIComponent(
+            `I just donated ₹${numericRupees.toLocaleString('en-IN')} to NexZen Foundation — an NGO empowering students and communities in West Bengal.\n\nEvery contribution matters. Join me: https://www.nexzenfoundation.in/donate`
+          );
+          const share = window.confirm(
+            'Thank you! Would you like to share your donation on WhatsApp and inspire others?'
+          );
+          if (share) window.open(`https://wa.me/?text=${msg}`, '_blank');
+        }, 1500);
       },
       modal: {
         backdropclose: false,
@@ -252,9 +260,10 @@ export default function RazorpayButton({ amount }) {
     openRzp();
   };
 
+  const isMonthly = mode === 'monthly';
   const btnLabel = numericRupees && numericRupees >= 1
-    ? `Donate \u20b9${numericRupees.toLocaleString('en-IN')}`
-    : 'Donate Now';
+    ? (isMonthly ? `Give ₹${numericRupees.toLocaleString('en-IN')}/month` : `Donate ₹${numericRupees.toLocaleString('en-IN')}`)
+    : (isMonthly ? 'Set Up Monthly Giving' : 'Donate Now');
 
   return (
     <button
@@ -293,7 +302,7 @@ export default function RazorpayButton({ amount }) {
           : 'none';
       }}
     >
-      <Heart size={17} fill="white" />
+      <>{isMonthly ? <RefreshCw size={17} /> : <Heart size={17} fill="white" />}</>
       {btnLabel}
     </button>
   );

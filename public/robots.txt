@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+
+Sitemap: https://www.nexzenfoundation.in/sitemap.xml
+Host: https://www.nexzenfoundation.in
