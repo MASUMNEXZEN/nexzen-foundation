@@ -7,7 +7,6 @@ import {
 } from 'lucide-react';
 import RazorpayButton from '../components/RazorpayButton';
 
-/* ── GOAL CONFIG ── */
 const GOAL_AMOUNT   = 500000;
 const RAISED_AMOUNT = 187500;
 const DONOR_COUNT   = 243;
@@ -26,13 +25,8 @@ const donateFAQs = [
   { q: 'Do you accept cheque or DD donations?', a: 'Yes. Cheques and DDs should be drawn in favour of "NexZen Foundation" and mailed to our office. Please inform admin@nexzenfoundation.in after sending.' },
 ];
 
-function pctRaised() {
-  return Math.min(Math.round((RAISED_AMOUNT / GOAL_AMOUNT) * 100), 100);
-}
-
-function fmtINR(n) {
-  return '₹' + n.toLocaleString('en-IN');
-}
+function pctRaised() { return Math.min(Math.round((RAISED_AMOUNT / GOAL_AMOUNT) * 100), 100); }
+function fmtINR(n)    { return '₹' + n.toLocaleString('en-IN'); }
 
 export default function Donate() {
   const [selectedAmount, setSelected] = useState(null);
@@ -73,9 +67,9 @@ export default function Donate() {
         </div>
       </section>
 
-      {/* TAX COMPLIANCE BADGE STRIP */}
+      {/* BADGE STRIP */}
       <div style={{ background: 'linear-gradient(90deg,#0f3460,#16213e)', padding: '1rem 0' }}>
-        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: '0.75rem', textAlign: 'center' }}>
+        <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(180px,1fr))', gap: '0.75rem' }}>
           {[
             { icon: <ShieldCheck size={18}/>, title: '80G Certified',    sub: 'Tax exemption on all donations', color: '#34D399' },
             { icon: <BadgeCheck size={18}/>,  title: 'NGO Darpan',       sub: 'WB/2025/0892907',               color: '#60A5FA' },
@@ -84,7 +78,7 @@ export default function Donate() {
           ].map(b => (
             <div key={b.title} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem' }}>
               <div style={{ color: b.color, flexShrink: 0 }}>{b.icon}</div>
-              <div style={{ textAlign: 'left' }}>
+              <div>
                 <div style={{ color: 'white', fontWeight: 700, fontSize: '0.82rem' }}>{b.title}</div>
                 <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.72rem' }}>{b.sub}</div>
               </div>
@@ -93,15 +87,13 @@ export default function Donate() {
         </div>
       </div>
 
-      {/* DONATION GOAL WIDGET */}
+      {/* GOAL WIDGET */}
       <section style={{ background: 'var(--nex-grey-50)', padding: '2.5rem 0', borderBottom: '1px solid var(--nex-grey-200)' }}>
         <div className="container" style={{ maxWidth: '760px', margin: '0 auto' }}>
           <div className="card reveal" style={{ padding: '2rem', border: '2px solid var(--nex-red)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
               <div>
-                <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--nex-red)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '0.25rem' }}>
-                  FY 2025–26 IMPACT FUND
-                </div>
+                <div style={{ fontSize: '0.78rem', fontWeight: 700, color: 'var(--nex-red)', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '0.25rem' }}>FY 2025–26 IMPACT FUND</div>
                 <h3 style={{ margin: 0, fontSize: '1.1rem' }}>Help us reach {fmtINR(GOAL_AMOUNT)}</h3>
               </div>
               <div style={{ textAlign: 'right' }}>
@@ -120,23 +112,20 @@ export default function Donate() {
         </div>
       </section>
 
+      {/* MAIN CONTENT */}
       <section className="container section-padding">
         <div className="about-section-grid">
 
-          {/* LEFT — Impact + Trust */}
+          {/* LEFT — Impact */}
           <div className="reveal">
             <div className="section-label">WHY DONATE</div>
             <h2 className="section-title">Your Donation's Real Impact</h2>
-            <p style={{ fontSize: '1.05rem', marginBottom: '2rem' }}>
-              We operate with minimal overhead — maximum funds reach the ground.
-            </p>
-
+            <p style={{ fontSize: '1.05rem', marginBottom: '2rem' }}>We operate with minimal overhead — maximum funds reach the ground.</p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2.5rem' }}>
               {donationTiers.map(tier => (
                 <ImpactItem key={tier.amount} title={tier.amount} text={tier.impact} />
               ))}
             </div>
-
             <div className="card" style={{ padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '1rem', borderLeft: '4px solid #059669', marginBottom: '1rem' }}>
               <Lock size={28} color="#059669" style={{ flexShrink: 0 }}/>
               <div>
@@ -144,7 +133,6 @@ export default function Donate() {
                 <span style={{ fontSize: '0.875rem', color: 'var(--nex-grey-500)' }}>256-bit SSL encryption · Processed by Razorpay · PCI-DSS compliant</span>
               </div>
             </div>
-
             <div className="card" style={{ padding: '1.25rem', display: 'flex', alignItems: 'center', gap: '1rem', borderLeft: '4px solid var(--nex-red)' }}>
               <ShieldCheck size={28} color="var(--nex-red)" style={{ flexShrink: 0 }}/>
               <div>
@@ -154,81 +142,17 @@ export default function Donate() {
             </div>
           </div>
 
-          {/* RIGHT — Payment cards */}
+          {/* RIGHT — Payment options: QR → Razorpay → Bank */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
-            {/* ONLINE PAYMENT */}
-            <div className="card reveal" style={{ padding: '2.5rem', border: '2px solid var(--nex-red)', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg,var(--nex-red),#FF6B6B)' }}/>
-
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-                <div style={{ background: 'var(--nex-red)', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <CreditCard size={24} color="white"/>
-                </div>
-                <div>
-                  <h3 style={{ fontSize: '1.2rem', margin: 0 }}>Pay Online Instantly</h3>
-                  <span style={{ color: 'var(--nex-grey-500)', fontSize: '0.875rem' }}>Credit/Debit · Net Banking · UPI · Wallets</span>
-                </div>
-              </div>
-
-              {/* Amount selector */}
-              <div style={{ marginBottom: '1.25rem' }}>
-                <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--nex-grey-700)', marginBottom: '0.75rem' }}>Select Amount</p>
-                <div className="donation-amounts">
-                  {['₹500', '₹1,000', '₹5,000', '₹10,000'].map(amt => (
-                    <button key={amt} className={`donation-amount-btn ${selectedAmount === amt ? 'selected' : ''}`} onClick={() => setSelected(amt)}>
-                      {amt}
-                    </button>
-                  ))}
-                  <button className={`donation-amount-btn ${selectedAmount === 'custom' ? 'selected' : ''}`} onClick={() => { setSelected('custom'); setCustom(''); }}>
-                    Custom
-                  </button>
-                </div>
-
-                {selectedAmount === 'custom' && (
-                  <div style={{ marginTop: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--nex-grey-50)', border: '2px solid var(--nex-red)', borderRadius: 'var(--radius-md)', padding: '0.5rem 1rem' }}>
-                    <span style={{ fontWeight: 700, color: 'var(--nex-charcoal)', fontSize: '1.1rem' }}>₹</span>
-                    <input type="number" min="1" placeholder="Enter amount" value={customAmount}
-                      onChange={e => setCustom(e.target.value.replace(/[^0-9]/g, ''))}
-                      style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '1rem', fontWeight: 600, color: 'var(--nex-charcoal)', width: '100%' }} autoFocus />
-                  </div>
-                )}
-
-                {selectedAmount && donationTiers.find(t => t.amount === selectedAmount) && (
-                  <p style={{ fontSize: '0.85rem', color: '#059669', fontWeight: 500, marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <CheckCircle size={14}/> {donationTiers.find(t => t.amount === selectedAmount)?.impact}
-                  </p>
-                )}
-              </div>
-
-              <RazorpayButton amount={finalAmount}/>
-            </div>
-
-            {/* BANK TRANSFER */}
-            <div className="card reveal reveal-delay-1" style={{ padding: '2.5rem' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
-                <div style={{ background: 'var(--nex-red-light)', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <Building size={24} color="var(--nex-red)"/>
-                </div>
-                <h3 style={{ fontSize: '1.2rem', margin: 0 }}>Bank Transfer (NEFT / RTGS)</h3>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <DetailRow label="Account Name" value="NexZen Foundation" />
-                <DetailRow label="Account No."  value="8218788698" />
-                <DetailRow label="Bank"         value="Indian Bank" />
-                <DetailRow label="Branch"       value="Eroali" />
-                <DetailRow label="IFSC"         value="IDIB000E509" />
-              </div>
-            </div>
-
-            {/* UPI QR */}
-            <div className="card reveal reveal-delay-2" style={{ padding: '2.5rem' }}>
+            {/* 1. UPI QR */}
+            <div className="card reveal" style={{ padding: '2.5rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
                 <div style={{ background: 'var(--nex-red-light)', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <QrCode size={24} color="var(--nex-red)"/>
                 </div>
                 <div>
-                  <h3 style={{ fontSize: '1.2rem', margin: 0 }}>Scan & Pay via UPI</h3>
+                  <h3 style={{ fontSize: '1.2rem', margin: 0 }}>Scan &amp; Pay via UPI</h3>
                   <span style={{ fontSize: '0.85rem', color: 'var(--nex-grey-500)' }}>Works with GPay · PhonePe · Paytm · BHIM</span>
                 </div>
               </div>
@@ -254,8 +178,63 @@ export default function Donate() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+
+            {/* 2. Razorpay */}
+            <div className="card reveal reveal-delay-1" style={{ padding: '2.5rem', border: '2px solid var(--nex-red)', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '4px', background: 'linear-gradient(90deg,var(--nex-red),#FF6B6B)' }}/>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div style={{ background: 'var(--nex-red)', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <CreditCard size={24} color="white"/>
+                </div>
+                <div>
+                  <h3 style={{ fontSize: '1.2rem', margin: 0 }}>Pay Online via Razorpay</h3>
+                  <span style={{ color: 'var(--nex-grey-500)', fontSize: '0.875rem' }}>Credit/Debit · Net Banking · UPI · Wallets</span>
+                </div>
+              </div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--nex-grey-700)', marginBottom: '0.75rem' }}>Select Amount</p>
+                <div className="donation-amounts">
+                  {['₹500', '₹1,000', '₹5,000', '₹10,000'].map(amt => (
+                    <button key={amt} className={`donation-amount-btn ${selectedAmount === amt ? 'selected' : ''}`} onClick={() => setSelected(amt)}>{amt}</button>
+                  ))}
+                  <button className={`donation-amount-btn ${selectedAmount === 'custom' ? 'selected' : ''}`} onClick={() => { setSelected('custom'); setCustom(''); }}>Custom</button>
+                </div>
+                {selectedAmount === 'custom' && (
+                  <div style={{ marginTop: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--nex-grey-50)', border: '2px solid var(--nex-red)', borderRadius: 'var(--radius-md)', padding: '0.5rem 1rem' }}>
+                    <span style={{ fontWeight: 700, color: 'var(--nex-charcoal)', fontSize: '1.1rem' }}>₹</span>
+                    <input type="number" min="1" placeholder="Enter amount" value={customAmount}
+                      onChange={e => setCustom(e.target.value.replace(/[^0-9]/g, ''))}
+                      style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '1rem', fontWeight: 600, color: 'var(--nex-charcoal)', width: '100%' }} autoFocus/>
+                  </div>
+                )}
+                {selectedAmount && donationTiers.find(t => t.amount === selectedAmount) && (
+                  <p style={{ fontSize: '0.85rem', color: '#059669', fontWeight: 500, marginTop: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <CheckCircle size={14}/> {donationTiers.find(t => t.amount === selectedAmount)?.impact}
+                  </p>
+                )}
+              </div>
+              <RazorpayButton amount={finalAmount}/>
+            </div>
+
+            {/* 3. Bank Transfer */}
+            <div className="card reveal reveal-delay-2" style={{ padding: '2.5rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem' }}>
+                <div style={{ background: 'var(--nex-red-light)', width: '48px', height: '48px', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <Building size={24} color="var(--nex-red)"/>
+                </div>
+                <h3 style={{ fontSize: '1.2rem', margin: 0 }}>Bank Transfer (NEFT / RTGS)</h3>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <DetailRow label="Account Name" value="NexZen Foundation" />
+                <DetailRow label="Account No."  value="8218788698" />
+                <DetailRow label="Bank"         value="Indian Bank" />
+                <DetailRow label="Branch"       value="Eroali" />
+                <DetailRow label="IFSC"         value="IDIB000E509" />
+              </div>
+            </div>
+
+          </div>{/* end right column */}
+        </div>{/* end grid */}
       </section>
 
       {/* DONATION FAQs */}
