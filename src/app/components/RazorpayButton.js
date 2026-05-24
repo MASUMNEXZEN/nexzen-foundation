@@ -19,17 +19,25 @@ export default function RazorpayButton({ amount }) {
     document.body.appendChild(script);
   }, []);
 
-  // Parse selected amount → paise (Razorpay uses paise)
-  const numericRupees = amount && amount !== 'custom'
+  // Parse selected amount → paise (Razorpay uses paise, 1 INR = 100 paise)
+  const numericRupees = amount
     ? parseInt(amount.replace(/[₹,]/g, ''), 10)
     : null;
 
-  const amountInPaise = numericRupees ? numericRupees * 100 : null;
+  const amountInPaise = numericRupees && numericRupees >= 1
+    ? numericRupees * 100
+    : null;
 
   const openCheckout = () => {
+    // Guard: don't open without a valid amount
+    if (!amountInPaise) {
+      alert('Please select or enter a donation amount first.');
+      return;
+    }
+
     const options = {
       key: 'rzp_live_StGuTXsWa2VD8P',
-      ...(amountInPaise && { amount: amountInPaise }),
+      amount: amountInPaise,
       currency: 'INR',
       name: 'NexZen Foundation',
       description: 'Charitable Donation',
@@ -41,7 +49,6 @@ export default function RazorpayButton({ amount }) {
       },
       theme: { color: '#D42B2B' },
       handler: function (response) {
-        // Payment successful — show a thank-you message
         alert(
           `🙏 Thank you for your donation!\n\nPayment ID: ${response.razorpay_payment_id}\n\nYou will receive your 80G receipt within 7 working days.`
         );
@@ -60,7 +67,6 @@ export default function RazorpayButton({ amount }) {
         });
         rzp.open();
       } else {
-        // Script still loading — wait and retry
         setTimeout(openRzp, 500);
       }
     };
@@ -68,7 +74,7 @@ export default function RazorpayButton({ amount }) {
     openRzp();
   };
 
-  const btnLabel = numericRupees
+  const btnLabel = numericRupees && numericRupees >= 1
     ? `Donate ₹${numericRupees.toLocaleString('en-IN')}`
     : 'Donate Now';
 
@@ -80,27 +86,35 @@ export default function RazorpayButton({ amount }) {
         alignItems: 'center',
         justifyContent: 'center',
         gap: '0.5rem',
-        background: 'linear-gradient(135deg, #D42B2B, #a81e1e)',
+        background: amountInPaise
+          ? 'linear-gradient(135deg, #D42B2B, #a81e1e)'
+          : 'linear-gradient(135deg, #aaa, #888)',
         color: 'white',
         border: 'none',
         borderRadius: '50px',
         padding: '0.9rem 2rem',
         fontSize: '1rem',
         fontWeight: 700,
-        cursor: 'pointer',
-        boxShadow: '0 4px 15px rgba(212,43,43,0.35)',
+        cursor: amountInPaise ? 'pointer' : 'not-allowed',
+        boxShadow: amountInPaise
+          ? '0 4px 15px rgba(212,43,43,0.35)'
+          : 'none',
         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
         marginTop: '0.5rem',
         width: '100%',
         letterSpacing: '0.3px',
+        opacity: amountInPaise ? 1 : 0.6,
       }}
       onMouseEnter={e => {
+        if (!amountInPaise) return;
         e.currentTarget.style.transform = 'translateY(-2px)';
         e.currentTarget.style.boxShadow = '0 8px 24px rgba(212,43,43,0.4)';
       }}
       onMouseLeave={e => {
         e.currentTarget.style.transform = 'translateY(0)';
-        e.currentTarget.style.boxShadow = '0 4px 15px rgba(212,43,43,0.35)';
+        e.currentTarget.style.boxShadow = amountInPaise
+          ? '0 4px 15px rgba(212,43,43,0.35)'
+          : 'none';
       }}
     >
       <Heart size={17} fill="white" />

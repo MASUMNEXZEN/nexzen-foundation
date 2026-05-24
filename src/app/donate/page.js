@@ -20,7 +20,13 @@ const donateFAQs = [
 
 export default function Donate() {
   const [selectedAmount, setSelectedAmount] = useState(null);
+  const [customAmount, setCustomAmount] = useState('');
   const [openFaq, setOpenFaq] = useState(null);
+
+  // Resolve the final amount string to pass to Razorpay
+  const finalAmount = selectedAmount === 'custom'
+    ? (customAmount && parseInt(customAmount, 10) >= 1 ? `₹${customAmount}` : null)
+    : selectedAmount;
 
   return (
     <>
@@ -115,11 +121,28 @@ export default function Donate() {
                   ))}
                   <button
                     className={`donation-amount-btn ${selectedAmount === 'custom' ? 'selected' : ''}`}
-                    onClick={() => setSelectedAmount('custom')}
+                    onClick={() => { setSelectedAmount('custom'); setCustomAmount(''); }}
                   >
                     Custom
                   </button>
                 </div>
+
+                {/* Custom amount input */}
+                {selectedAmount === 'custom' && (
+                  <div style={{ marginTop: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'var(--nex-grey-50)', border: '2px solid var(--nex-red)', borderRadius: 'var(--radius-md)', padding: '0.5rem 1rem' }}>
+                    <span style={{ fontWeight: 700, color: 'var(--nex-charcoal)', fontSize: '1.1rem' }}>₹</span>
+                    <input
+                      type="number"
+                      min="1"
+                      placeholder="Enter amount"
+                      value={customAmount}
+                      onChange={e => setCustomAmount(e.target.value.replace(/[^0-9]/g, ''))}
+                      style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '1rem', fontWeight: 600, color: 'var(--nex-charcoal)', width: '100%' }}
+                      autoFocus
+                    />
+                  </div>
+                )}
+
                 {selectedAmount && donationTiers.find(t => t.amount === selectedAmount) && (
                   <p style={{ fontSize: '0.85rem', color: 'var(--nex-teal)', fontWeight: 500, marginTop: '0.5rem' }}>
                     ✓ {donationTiers.find(t => t.amount === selectedAmount)?.impact}
@@ -127,7 +150,7 @@ export default function Donate() {
                 )}
               </div>
 
-              <RazorpayButton amount={selectedAmount} />
+              <RazorpayButton amount={finalAmount} />
             </div>
 
             {/* Bank Transfer */}
