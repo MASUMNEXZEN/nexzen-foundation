@@ -60,6 +60,10 @@ html {
   scroll-behavior: smooth;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
   color: var(--nex-grey-700);
   background: var(--nex-white);
@@ -68,6 +72,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Custom Scrollbar */
@@ -82,6 +88,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 h1 { font-family: var(--font-serif); font-weight: 800; }
@@ -95,7 +103,7 @@ a {
   transition: all 0.25s var(--ease-out);
 }
 
-img { max-width: 100%; height: auto; }
+img { max-width: 100%; height: auto; display: block; }
 
 /* ============ SCROLL PROGRESS BAR ============ */
 .scroll-progress-bar {
@@ -114,6 +122,8 @@ img { max-width: 100%; height: auto; }
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  box-sizing: border-box;
+  max-width: min(1200px, 100%);
 }
 
 .section-padding { padding: 6rem 0; }
@@ -1531,12 +1541,15 @@ img { max-width: 100%; height: auto; }
   .nav-link::after { display: none; }
 
   .nav-donate {
-    display: block;
+    display: inline-flex;
+    align-items: center;
+    align-self: center;
     margin-left: 0;
     text-align: center;
-    border-radius: var(--radius-lg);
-    margin-top: 1.25rem;
-    padding: 0.85rem;
+    border-radius: 50px;
+    padding: 0.55rem 1.1rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
   }
 
   .nav-hamburger { display: flex; z-index: 999; position: relative; }
