@@ -87,7 +87,7 @@ export default function NTSEPage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section style={{ background: 'linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#1a0a0a 100%)', minHeight: '92vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ background: 'linear-gradient(135deg,#0f172a 0%,#1e1b4b 50%,#1a0a0a 100%)', minHeight: 'min(92vh,100svh)', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
         {/* decorative circles */}
         {[
           { w:500, h:500, top:'-150px', right:'-150px', bg:'rgba(212,43,43,0.08)' },
@@ -104,9 +104,9 @@ export default function NTSEPage() {
             <span style={{ color:'#FF6B6B', fontSize:'0.8rem', fontWeight:700, textTransform:'uppercase', letterSpacing:'1px' }}>NexZen Foundation Presents</span>
           </div>
 
-          <div style={{ display:'grid', gridTemplateColumns:'1fr auto', gap:'3rem', alignItems:'center' }}>
+          <div style={{ display:'grid', gridTemplateColumns:'1fr auto', gap:'3rem', alignItems:'center' }} className="ntse-hero-inner">
             <div>
-              <h1 style={{ fontSize:'clamp(2.8rem,6vw,4.5rem)', color:'white', lineHeight:1.05, marginBottom:'0.5rem', fontWeight:900 }}>
+              <h1 style={{ fontSize:'clamp(2rem,6vw,4.5rem)', color:'white', lineHeight:1.05, marginBottom:'0.5rem', fontWeight:900 }}>
                 Nexzen Talent<br/>
                 <span style={{ color:'#FF6B6B' }}>Search Exam</span>
               </h1>
@@ -163,8 +163,8 @@ export default function NTSEPage() {
       </section>
 
       {/* ── TAGLINE STRIP ── */}
-      <div style={{ background:'linear-gradient(90deg,#D42B2B,#a81e1e)', padding:'1.2rem 0', textAlign:'center' }}>
-        <span style={{ color:'white', fontWeight:700, fontSize:'1.05rem', letterSpacing:'2px', textTransform:'uppercase' }}>
+      <div style={{ background:'linear-gradient(90deg,#D42B2B,#a81e1e)', padding:'1.2rem 0', textAlign:'center', overflow:'hidden' }}>
+        <span style={{ color:'white', fontWeight:700, fontSize:'clamp(0.78rem,2.5vw,1.05rem)', letterSpacing:'1px', textTransform:'uppercase', whiteSpace:'normal', display:'block', padding:'0 1rem' }}>
           Inspiring Excellence &nbsp;·&nbsp; Rewarding Merit &nbsp;·&nbsp; Shaping Futures
         </span>
       </div>

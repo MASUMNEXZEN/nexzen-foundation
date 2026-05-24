@@ -91,7 +91,7 @@ export default function RootLayout({ children }) {
       <body>
         <ScrollProgressBar />
         <Navbar />
-        <main style={{ minHeight: '80vh', paddingTop: '80px' }}>{children}</main>
+        <main className="main-content" style={{ minHeight: '80vh' }}>{children}</main>
         <Footer />
         <BackToTop />
         <WhatsAppButton />
