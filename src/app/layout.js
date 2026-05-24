@@ -225,6 +225,7 @@ const consultancyLinks = [
 
 /* ─── NAV PROGRAMMES ─── */
 const programmes = [
+  { href: '/ntse', icon: <GraduationCap size={18} />, title: 'NTSE 2026', desc: 'Talent Search Examination' },
   { href: '/programmes/scholarships', icon: <GraduationCap size={18} />, title: 'Scholarships', desc: 'Savitri Bai Phule & NTSE' },
   { href: '/programmes/ipec', icon: <Building2 size={18} />, title: 'IPEC', desc: 'Professional Colleges' },
   { href: '/programmes/healthcare', icon: <HeartPulse size={18} />, title: 'Healthcare', desc: 'Community Health Camps' },
@@ -336,7 +337,7 @@ function Footer() {
           </div>
           <div>
             <h4>Programmes</h4>
-            {[['Free Consultancy', '/consultancy'], ['For Individuals', '/consultancy/individual'], ['For Institutions', '/consultancy/institutional'], ['Scholarships', '/programmes/scholarships'], ['Healthcare', '/programmes/healthcare'], ['Smart Bangla Classroom', '/programmes/school-upgradation']].map(([l, h]) => (
+            {[['NTSE 2026', '/ntse'], ['Free Consultancy', '/consultancy'], ['For Individuals', '/consultancy/individual'], ['For Institutions', '/consultancy/institutional'], ['Scholarships', '/programmes/scholarships'], ['Healthcare', '/programmes/healthcare'], ['Smart Bangla Classroom', '/programmes/school-upgradation']].map(([l, h]) => (
               <Link key={h} href={h} className="footer-link">{l}</Link>
             ))}
           </div>
