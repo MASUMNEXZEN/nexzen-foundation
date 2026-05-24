@@ -20,11 +20,12 @@ const donationTiers = [
 ];
 
 const monthlyTiers = [
-  { amount: '₹100',   impact: '₹1,200/yr · Stationery for a student annually' },
-  { amount: '₹250',   impact: '₹3,000/yr · Monthly coaching for one student' },
-  { amount: '₹500',   impact: '₹6,000/yr · Health camp contribution annually' },
-  { amount: '₹1,000', impact: '₹12,000/yr · A full scholarship year' },
+  { amount: '₹99',  name: 'Supporter', impact: '₹1,188/yr · Stationery & notebooks for a student' },
+  { amount: '₹249', name: 'Champion',  impact: '₹2,988/yr · Monthly exam coaching materials' },
+  { amount: '₹499', name: 'Patron',    impact: '₹5,988/yr · Full monthly study support package' },
+  { amount: '₹999', name: 'Guardian',  impact: '₹11,988/yr · A student\'s complete monthly welfare' },
 ];
+
 
 const donateFAQs = [
   { q: 'Is my donation tax-deductible?', a: 'Yes! NexZen Foundation is certified under Section 80G (AAFTN1149JF20261). You\'ll receive an official receipt + Form 10BE for your tax filing.' },
@@ -191,9 +192,12 @@ export default function Donate() {
               </div>
 
               {mode === 'monthly' && (
-                <div style={{ background:'#ECFDF5', border:'1px solid #34D399', borderRadius:'var(--radius-md)', padding:'0.75rem 1rem', marginBottom:'1.25rem', display:'flex', gap:'0.6rem', alignItems:'center' }}>
-                  <RefreshCw size={16} color="#059669" style={{ flexShrink:0 }} />
-                  <span style={{ fontSize:'0.875rem', color:'#065F46', fontWeight:500 }}>Monthly donors are our most impactful supporters — recurring gifts fund long-term programmes.</span>
+                <div style={{ background:'#ECFDF5', border:'1px solid #34D399', borderRadius:'var(--radius-md)', padding:'0.75rem 1rem', marginBottom:'1.25rem', display:'flex', gap:'0.6rem', alignItems:'flex-start' }}>
+                  <RefreshCw size={16} color="#059669" style={{ flexShrink:0, marginTop:'2px' }} />
+                  <div>
+                    <div style={{ fontSize:'0.875rem', color:'#065F46', fontWeight:700, marginBottom:'2px' }}>Genuine Auto-Debit via UPI AutoPay</div>
+                    <div style={{ fontSize:'0.8rem', color:'#047857' }}>Razorpay will set up a UPI mandate. Your selected amount is auto-debited every month — no action needed. Cancel anytime from your UPI app.</div>
+                  </div>
                 </div>
               )}
 
@@ -209,13 +213,23 @@ export default function Donate() {
 
               {/* Amount selector */}
               <div style={{ marginBottom:'1.25rem' }}>
-                <p style={{ fontSize:'0.875rem', fontWeight:600, color:'var(--nex-grey-700)', marginBottom:'0.75rem' }}>Select Amount</p>
+                <p style={{ fontSize:'0.875rem', fontWeight:600, color:'var(--nex-grey-700)', marginBottom:'0.75rem' }}>Select {mode === 'monthly' ? 'Plan' : 'Amount'}</p>
                 <div className="donation-amounts">
-                  {amounts.map(amt => (
-                    <button key={amt} className={`donation-amount-btn ${selectedAmount===amt?'selected':''}`} onClick={() => setSelected(amt)}>{amt}</button>
-                  ))}
-                  <button className={`donation-amount-btn ${selectedAmount==='custom'?'selected':''}`} onClick={() => { setSelected('custom'); setCustom(''); }}>Custom</button>
+                  {amounts.map(amt => {
+                    const tier = tiers.find(t => t.amount === amt);
+                    return (
+                      <button key={amt} className={`donation-amount-btn ${selectedAmount===amt?'selected':''}`} onClick={() => setSelected(amt)}>
+                        {mode === 'monthly' && tier?.name
+                          ? <><span style={{ display:'block', fontSize:'0.7rem', opacity:0.8, marginBottom:'1px' }}>{tier.name}</span>{amt}</>
+                          : amt}
+                      </button>
+                    );
+                  })}
+                  {mode === 'once' && (
+                    <button className={`donation-amount-btn ${selectedAmount==='custom'?'selected':''}`} onClick={() => { setSelected('custom'); setCustom(''); }}>Custom</button>
+                  )}
                 </div>
+
 
                 {selectedAmount === 'custom' && (
                   <div style={{ marginTop:'0.75rem', display:'flex', alignItems:'center', gap:'0.5rem', background:'var(--nex-grey-50)', border:'2px solid var(--nex-red)', borderRadius:'var(--radius-md)', padding:'0.5rem 1rem' }}>
