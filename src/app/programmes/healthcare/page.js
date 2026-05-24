@@ -13,7 +13,7 @@ export default function Healthcare() {
         <div className="container" style={heroContentStyles}>
           <div style={{ maxWidth: '800px' }}>
             <div style={{ color: 'var(--nex-red)', fontWeight: 600, marginBottom: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Pillar IV</div>
-            <h1 className="animate-fade-in" style={{ fontSize: '3.5rem', color: 'white', marginBottom: '1.5rem' }}>Healthcare Initiatives</h1>
+            <h1 className="animate-fade-in" style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: 'white', marginBottom: '1.5rem' }}>Healthcare Initiatives</h1>
             <p className="animate-fade-in" style={{ fontSize: '1.25rem', color: 'var(--nex-grey-100)', animationDelay: '0.2s' }}>
               Taking basic healthcare services to the last mile. We believe a healthy community is the foundation of a prosperous society.
             </p>
@@ -22,7 +22,7 @@ export default function Healthcare() {
       </section>
 
       <section className="container">
-        <div style={gridTwoCol}>
+        <div className="grid-2-col">
           <div>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--nex-charcoal)' }}>Our Healthcare Model</h2>
             <p style={{ fontSize: '1.1rem', marginBottom: '1.5rem' }}>

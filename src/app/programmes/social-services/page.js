@@ -13,7 +13,7 @@ export default function SocialServices() {
         <div className="container" style={heroContentStyles}>
           <div style={{ maxWidth: '800px' }}>
             <div style={{ color: 'var(--nex-red)', fontWeight: 600, marginBottom: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Pillar V</div>
-            <h1 className="animate-fade-in" style={{ fontSize: '3.5rem', color: 'white', marginBottom: '1.5rem' }}>Social Services</h1>
+            <h1 className="animate-fade-in" style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: 'white', marginBottom: '1.5rem' }}>Social Services</h1>
             <p className="animate-fade-in" style={{ fontSize: '1.25rem', color: 'var(--nex-grey-100)', animationDelay: '0.2s' }}>
               Direct action and relief when the community needs it most. Because compassion cannot wait.
             </p>
@@ -27,7 +27,7 @@ export default function SocialServices() {
           Beyond structural programmes like education and healthcare, NexZen Foundation actively engages in immediate relief and social welfare activities to support the most vulnerable sections of society.
         </p>
 
-        <div style={gridGrid}>
+        <div className="grid-4-col">
           <InterventionCard icon={<Utensils size={32} color="var(--nex-red)" />} title="Food Distribution" text="Regular community kitchen drives and dry ration distribution for impoverished families." />
           <InterventionCard icon={<Home size={32} color="var(--nex-red)" />} title="Winter Relief" text="Distribution of blankets and warm clothing in rural tribal belts during harsh winters." />
           <InterventionCard icon={<Droplets size={32} color="var(--nex-red)" />} title="Clean Water" text="Installing tubewells and water purifiers in remote villages facing clean drinking water scarcity." />

@@ -13,7 +13,7 @@ export default function IPEC() {
         <div className="container" style={heroContentStyles}>
           <div style={{ maxWidth: '800px' }}>
             <div style={{ color: 'var(--nex-red)', fontWeight: 600, marginBottom: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Pillar II</div>
-            <h1 className="animate-fade-in" style={{ fontSize: '3.5rem', color: 'white', marginBottom: '1.5rem' }}>Integrated Professional Educational Campuses</h1>
+            <h1 className="animate-fade-in" style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: 'white', marginBottom: '1.5rem' }}>Integrated Professional Educational Campuses</h1>
             <p className="animate-fade-in" style={{ fontSize: '1.25rem', color: 'var(--nex-grey-100)', animationDelay: '0.2s' }}>
               Halting the brain drain by establishing state-of-the-art Law, Pharmacy, and Nursing colleges right where they are needed most—in the heart of rural Bengal.
             </p>
@@ -27,7 +27,7 @@ export default function IPEC() {
           Rural students often have to migrate to Tier-1 cities for professional education, incurring heavy costs and causing a "brain drain" from their local communities. The IPEC model builds high-quality, multi-disciplinary campuses locally.
         </p>
         
-        <div style={gridThreeCol}>
+        <div className="grid-3-col">
           <CollegeCard 
             icon={<Scale size={32} color="var(--nex-red)" />}
             title="College of Law"
@@ -50,7 +50,7 @@ export default function IPEC() {
       </section>
 
       <section style={{ backgroundColor: 'var(--nex-grey-100)', padding: '5rem 0' }}>
-        <div className="container" style={gridTwoCol}>
+        <div className="container grid-2-col">
           <div>
             <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Shared Infrastructure Model</h2>
             <p style={{ fontSize: '1.1rem', marginBottom: '1rem' }}>

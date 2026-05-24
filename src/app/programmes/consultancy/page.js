@@ -13,7 +13,7 @@ export default function Consultancy() {
         <div className="container" style={heroContentStyles}>
           <div style={{ maxWidth: '800px' }}>
             <div style={{ color: 'var(--nex-red)', fontWeight: 600, marginBottom: '1rem', letterSpacing: '1px', textTransform: 'uppercase' }}>Pillar III</div>
-            <h1 className="animate-fade-in" style={{ fontSize: '3.5rem', color: 'white', marginBottom: '1.5rem' }}>Consultancy Services</h1>
+            <h1 className="animate-fade-in" style={{ fontSize: 'clamp(2.25rem, 5vw, 3.5rem)', color: 'white', marginBottom: '1.5rem' }}>Consultancy Services</h1>
             <p className="animate-fade-in" style={{ fontSize: '1.25rem', color: 'var(--nex-grey-100)', animationDelay: '0.2s' }}>
               Bridging the knowledge gap. We provide expert advisory services for students seeking higher education pathways and institutions navigating complex regulatory frameworks.
             </p>
@@ -22,7 +22,7 @@ export default function Consultancy() {
       </section>
 
       <section className="container">
-        <div style={gridTwoCol}>
+        <div className="grid-2-col">
           <div style={serviceCard}>
             <div style={iconWrapper}><GraduationCap size={32} color="var(--nex-red)" /></div>
             <h2 style={{ fontSize: '2rem', marginBottom: '1.5rem' }}>For Students</h2>
@@ -88,7 +88,7 @@ const gridTwoCol = {
 
 const serviceCard = {
   backgroundColor: 'white',
-  padding: '3rem',
+  padding: 'clamp(1.5rem, 5vw, 3rem)',
   borderRadius: 'var(--radius-lg)',
   boxShadow: 'var(--shadow-md)',
   borderTop: '4px solid var(--nex-red)',
