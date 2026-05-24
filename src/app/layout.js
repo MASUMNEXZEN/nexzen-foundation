@@ -264,22 +264,7 @@ function Navbar() {
           <Link href="/" className={`nav-link ${pathname === '/' ? 'active' : ''}`}>Home</Link>
           <Link href="/about" className={`nav-link ${pathname === '/about' ? 'active' : ''}`}>About</Link>
 
-          {/* Consultancy — top-level dropdown */}
-          <div className="nav-item-dropdown">
-            <Link href="/consultancy" className={`nav-link ${pathname.startsWith('/consultancy') ? 'active' : ''}`}>Consultancy</Link>
-            <div className="nav-dropdown-menu">
-              {consultancyLinks.map(c => (
-                <Link key={c.href} href={c.href} className="dropdown-item">
-                  <div className="dropdown-item-icon">{c.icon}</div>
-                  <div>
-                    <div className="dropdown-item-title">{c.title}</div>
-                    <div className="dropdown-item-desc">{c.desc}</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </div>
-
+          {/* Programmes dropdown */}
           <div className="nav-item-dropdown">
             <Link href="/programmes" className={`nav-link ${pathname.startsWith('/programmes') ? 'active' : ''}`}>Programmes</Link>
             <div className="nav-dropdown-menu">
@@ -295,9 +280,24 @@ function Navbar() {
             </div>
           </div>
 
-          <Link href="/ntse" className={`nav-link ${pathname === '/ntse' ? 'active' : ''}`}
-            style={{ position: 'relative', fontWeight: 700, color: pathname === '/ntse' ? 'var(--nex-red)' : 'var(--nex-red)', display: 'flex', alignItems: 'center', gap: '5px' }}>
-            <span style={{ background: 'var(--nex-red)', color: 'white', fontSize: '0.68rem', fontWeight: 800, padding: '2px 8px', borderRadius: '50px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>NTSE 2026</span>
+          {/* Consultancy dropdown */}
+          <div className="nav-item-dropdown">
+            <Link href="/consultancy" className={`nav-link ${pathname.startsWith('/consultancy') ? 'active' : ''}`}>Consultancy</Link>
+            <div className="nav-dropdown-menu">
+              {consultancyLinks.map(c => (
+                <Link key={c.href} href={c.href} className="dropdown-item">
+                  <div className="dropdown-item-icon">{c.icon}</div>
+                  <div>
+                    <div className="dropdown-item-title">{c.title}</div>
+                    <div className="dropdown-item-desc">{c.desc}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          <Link href="/ntse" className={`nav-link ${pathname === '/ntse' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center' }}>
+            <span style={{ background: 'var(--nex-red)', color: 'white', fontSize: '0.68rem', fontWeight: 800, padding: '3px 10px', borderRadius: '50px', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>NTSE 2026</span>
           </Link>
           <Link href="/leadership" className={`nav-link ${pathname === '/leadership' ? 'active' : ''}`}>Leadership</Link>
           <Link href="/gallery" className={`nav-link ${pathname === '/gallery' ? 'active' : ''}`}>Gallery</Link>
