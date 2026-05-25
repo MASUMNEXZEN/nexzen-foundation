@@ -5,7 +5,7 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import {
   GraduationCap, Building2, BookOpen, HeartPulse, HeartHandshake, School,
-  Menu, X, ChevronUp, ShieldCheck, BadgeCheck, FileText, Moon, Sun, Heart, ArrowRight,
+  Menu, X, ChevronUp, ChevronDown, ShieldCheck, BadgeCheck, FileText, Moon, Sun, Heart, ArrowRight,
   Newspaper, Image as ImageIcon, Users
 } from 'lucide-react';
 
@@ -217,6 +217,7 @@ function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -225,13 +226,16 @@ function Navbar() {
     return () => window.removeEventListener('scroll', fn);
   }, []);
 
-  useEffect(() => { setMenuOpen(false); }, [pathname]);
+  useEffect(() => { setMenuOpen(false); setOpenDropdown(null); }, [pathname]);
 
   const toggleDark = () => {
     const next = !darkMode;
     setDarkMode(next);
     document.documentElement.setAttribute('data-theme', next ? 'dark' : '');
   };
+
+  const toggleDropdown = (name) =>
+    setOpenDropdown(prev => (prev === name ? null : name));
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
@@ -245,11 +249,17 @@ function Navbar() {
           <Link href="/about" className={`nav-link ${pathname === '/about' ? 'active' : ''}`}>About</Link>
 
           {/* Programmes dropdown */}
-          <div className="nav-item-dropdown">
-            <Link href="/programmes" className={`nav-link ${pathname.startsWith('/programmes') ? 'active' : ''}`}>Programmes</Link>
+          <div className={`nav-item-dropdown ${openDropdown === 'programmes' ? 'mobile-open' : ''}`}>
+            <button
+              className={`nav-link nav-dropdown-trigger ${pathname.startsWith('/programmes') ? 'active' : ''}`}
+              onClick={() => toggleDropdown('programmes')}
+              aria-expanded={openDropdown === 'programmes'}
+            >
+              Programmes <ChevronDown size={14} className="dropdown-chevron" />
+            </button>
             <div className="nav-dropdown-menu">
               {programmes.map(p => (
-                <Link key={p.href} href={p.href} className="dropdown-item">
+                <Link key={p.href} href={p.href} className="dropdown-item" onClick={() => setOpenDropdown(null)}>
                   <div className="dropdown-item-icon">{p.icon}</div>
                   <div>
                     <div className="dropdown-item-title">{p.title}</div>
@@ -261,11 +271,17 @@ function Navbar() {
           </div>
 
           {/* Consultancy dropdown */}
-          <div className="nav-item-dropdown">
-            <Link href="/consultancy" className={`nav-link ${pathname.startsWith('/consultancy') ? 'active' : ''}`}>Consultancy</Link>
+          <div className={`nav-item-dropdown ${openDropdown === 'consultancy' ? 'mobile-open' : ''}`}>
+            <button
+              className={`nav-link nav-dropdown-trigger ${pathname.startsWith('/consultancy') ? 'active' : ''}`}
+              onClick={() => toggleDropdown('consultancy')}
+              aria-expanded={openDropdown === 'consultancy'}
+            >
+              Consultancy <ChevronDown size={14} className="dropdown-chevron" />
+            </button>
             <div className="nav-dropdown-menu">
               {consultancyLinks.map(c => (
-                <Link key={c.href} href={c.href} className="dropdown-item">
+                <Link key={c.href} href={c.href} className="dropdown-item" onClick={() => setOpenDropdown(null)}>
                   <div className="dropdown-item-icon">{c.icon}</div>
                   <div>
                     <div className="dropdown-item-title">{c.title}</div>
@@ -281,31 +297,37 @@ function Navbar() {
           </Link>
 
           {/* More dropdown — News, Gallery, Leadership, Transparency */}
-          <div className="nav-item-dropdown">
-            <span className={`nav-link ${['/news','/gallery','/leadership','/transparency'].some(p => pathname === p) ? 'active' : ''}`} style={{ cursor: 'pointer' }}>More</span>
+          <div className={`nav-item-dropdown ${openDropdown === 'more' ? 'mobile-open' : ''}`}>
+            <button
+              className={`nav-link nav-dropdown-trigger ${['/news','/gallery','/leadership','/transparency'].includes(pathname) ? 'active' : ''}`}
+              onClick={() => toggleDropdown('more')}
+              aria-expanded={openDropdown === 'more'}
+            >
+              More <ChevronDown size={14} className="dropdown-chevron" />
+            </button>
             <div className="nav-dropdown-menu">
-              <Link href="/news" className="dropdown-item">
+              <Link href="/news" className="dropdown-item" onClick={() => setOpenDropdown(null)}>
                 <div className="dropdown-item-icon"><Newspaper size={18} /></div>
                 <div>
                   <div className="dropdown-item-title">News <span style={{ background: '#2ecc71', color: 'white', fontSize: '0.6rem', fontWeight: 800, padding: '1px 5px', borderRadius: '20px', marginLeft: '4px', verticalAlign: 'middle' }}>NEW</span></div>
-                  <div className="dropdown-item-desc">Press & Media Coverage</div>
+                  <div className="dropdown-item-desc">Press &amp; Media Coverage</div>
                 </div>
               </Link>
-              <Link href="/gallery" className="dropdown-item">
+              <Link href="/gallery" className="dropdown-item" onClick={() => setOpenDropdown(null)}>
                 <div className="dropdown-item-icon"><ImageIcon size={18} /></div>
                 <div>
                   <div className="dropdown-item-title">Gallery</div>
-                  <div className="dropdown-item-desc">Events & Activities</div>
+                  <div className="dropdown-item-desc">Events &amp; Activities</div>
                 </div>
               </Link>
-              <Link href="/leadership" className="dropdown-item">
+              <Link href="/leadership" className="dropdown-item" onClick={() => setOpenDropdown(null)}>
                 <div className="dropdown-item-icon"><Users size={18} /></div>
                 <div>
                   <div className="dropdown-item-title">Leadership</div>
-                  <div className="dropdown-item-desc">Founders & Trustees</div>
+                  <div className="dropdown-item-desc">Founders &amp; Trustees</div>
                 </div>
               </Link>
-              <Link href="/transparency" className="dropdown-item">
+              <Link href="/transparency" className="dropdown-item" onClick={() => setOpenDropdown(null)}>
                 <div className="dropdown-item-icon"><ShieldCheck size={18} /></div>
                 <div>
                   <div className="dropdown-item-title">Transparency</div>

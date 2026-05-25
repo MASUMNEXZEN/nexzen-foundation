@@ -474,6 +474,27 @@ img { max-width: 100%; height: auto; display: block; }
   position: relative;
 }
 
+/* Button reset — looks identical to nav-link */
+.nav-dropdown-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font: inherit;
+  color: inherit;
+  padding: 0;
+}
+.dropdown-chevron {
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+.mobile-open .dropdown-chevron,
+.nav-item-dropdown:hover .dropdown-chevron {
+  transform: rotate(180deg);
+}
+
 .nav-dropdown-menu {
   position: absolute;
   top: 100%;              /* flush — no gap */
@@ -1564,6 +1585,25 @@ img { max-width: 100%; height: auto; display: block; }
 
   .nav-hamburger { display: flex; z-index: 999; position: relative; }
   .nav-dropdown-menu { display: none !important; }
+  .mobile-open .nav-dropdown-menu {
+    display: grid !important;
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: none;
+    box-shadow: none;
+    min-width: unset;
+    width: 100%;
+    background: var(--nex-grey-50);
+    border-radius: 12px;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .mobile-open .nav-dropdown-menu::before { display: none; }
+  .nav-dropdown-trigger { width: 100%; justify-content: space-between; }
 
   /* --- Footer --- */
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -2357,6 +2397,26 @@ img, video, iframe, embed { max-width: 100%; height: auto; }
   .nav-link::after { display: none; }
   .nav-item-dropdown { width: 100%; }
   .nav-dropdown-menu { display: none !important; }
+  .mobile-open .nav-dropdown-menu {
+    display: grid !important;
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+    transform: none;
+    box-shadow: none;
+    min-width: unset;
+    width: 100%;
+    background: var(--nex-grey-50);
+    border-radius: 12px;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .mobile-open .nav-dropdown-menu::before { display: none; }
+  .nav-dropdown-trigger { width: 100%; justify-content: space-between; }
+
   .nav-donate {
     font-size: 0.875rem; padding: 0.55rem 1.1rem;
     white-space: nowrap; min-height: 40px;
