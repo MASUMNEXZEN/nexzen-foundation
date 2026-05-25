@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import {
   ArrowRight, GraduationCap, HeartPulse, Building2, ChevronRight,
   Activity, Users, Globe2, Sparkles, HeartHandshake, School,
@@ -79,6 +79,32 @@ export default function Home() {
             <TrustItem icon={<BadgeCheck size={14} />} label="Darpan ID" value="WB/2025/0892907" />
             <Divider />
             <TrustItem icon={<ShieldCheck size={14} />} label="80G Cert." value="AAFTN1149JF20261" />
+          </div>
+        </div>
+      </section>
+
+      {/* ── AS SEEN IN — PRESS STRIP ── */}
+      <section style={{ background: '#fffbf0', borderTop: '1px solid #ffe5a0', borderBottom: '1px solid #ffe5a0', padding: '0.9rem 0' }}>
+        <div className="container">
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#999', letterSpacing: '1px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+              As Seen In
+            </span>
+            <div style={{ width: '1px', height: '16px', background: '#ddd' }} />
+            <a
+              href="https://epaper.puberkalom.com/clip/26140"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', textDecoration: 'none' }}
+            >
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: '#D42B2B', fontFamily: 'serif' }}>পুবের কলম</span>
+              <span style={{ fontSize: '0.8rem', color: '#666' }}>Puber Kalom — Dec 2, 2025</span>
+              <span style={{ background: '#fff0f0', border: '1px solid #ffd0d0', color: '#D42B2B', fontSize: '0.7rem', fontWeight: 700, padding: '2px 8px', borderRadius: '20px' }}>FEATURED</span>
+            </a>
+            <div style={{ width: '1px', height: '16px', background: '#ddd' }} />
+            <a href="/news" style={{ fontSize: '0.8rem', color: '#D42B2B', fontWeight: 600, textDecoration: 'none' }}>
+              View all coverage →
+            </a>
           </div>
         </div>
       </section>
@@ -358,3 +384,4 @@ function FocusCard({ icon, title, desc, link, delay }) {
     </div>
   );
 }
+

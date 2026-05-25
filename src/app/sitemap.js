@@ -1,4 +1,4 @@
-export default function sitemap() {
+﻿export default function sitemap() {
   const baseUrl = 'https://www.nexzenfoundation.in';
   const now = new Date().toISOString();
 
@@ -32,3 +32,4 @@ export default function sitemap() {
     priority: route.priority,
   }));
 }
+

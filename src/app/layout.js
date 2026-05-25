@@ -280,6 +280,10 @@ function Navbar() {
           </Link>
           <Link href="/leadership" className={`nav-link ${pathname === '/leadership' ? 'active' : ''}`}>Leadership</Link>
           <Link href="/gallery" className={`nav-link ${pathname === '/gallery' ? 'active' : ''}`}>Gallery</Link>
+          <Link href="/news" className={`nav-link ${pathname === '/news' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+            <span>News</span>
+            <span style={{ background: 'linear-gradient(135deg,#2ecc71,#27ae60)', color: 'white', fontSize: '0.6rem', fontWeight: 800, padding: '2px 6px', borderRadius: '50px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>NEW</span>
+          </Link>
           <Link href="/transparency" className={`nav-link ${pathname === '/transparency' ? 'active' : ''}`}>Transparency</Link>
           <Link href="/contact" className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}>Contact</Link>
         </div>
