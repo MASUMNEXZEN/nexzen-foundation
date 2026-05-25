@@ -1,6 +1,13 @@
 import { HeartPulse, Stethoscope, Truck, Activity } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Free Healthcare Camps West Bengal | Mobile Medical Units | NexZen Foundation',
+  description: 'NexZen Foundation organises free healthcare camps, mobile medical units, specialist health check-up drives, and awareness programmes across rural West Bengal. Serving underserved communities.',
+  keywords: 'free health camp West Bengal, mobile medical unit West Bengal, NGO healthcare West Bengal, free medical camp Kolkata, rural healthcare NGO West Bengal, specialist health camp West Bengal',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/programmes/healthcare' },
+  openGraph: { title: 'Free Healthcare Camps | NexZen Foundation West Bengal', description: 'Free health camps, mobile clinics, and specialist medical drives across rural West Bengal.', url: 'https://www.nexzenfoundation.in/programmes/healthcare', siteName: 'NexZen Foundation', locale: 'en_IN', type: 'website' },
+  twitter: { card: 'summary_large_image', title: 'Healthcare | NexZen Foundation', description: 'Free health camps and mobile medical units across rural West Bengal.' },
   title: 'Healthcare | NexZen Foundation',
   description: 'Community health camps, mobile clinics, and awareness programmes in underserved regions.',
 };

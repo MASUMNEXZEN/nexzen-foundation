@@ -6,6 +6,20 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Free Individual Career Consultancy | NEET WBJEE JENPAS Guidance | NexZen Foundation West Bengal',
+  description: 'Completely free one-on-one career consultancy for students in West Bengal. NEET, WBJEE, JENPAS, CLAT guidance, college selection, gap year planning, scholarship research, and study plan design. Remote and in-person sessions available.',
+  keywords: 'free individual career counselling West Bengal, one on one NEET guidance West Bengal, free WBJEE counselling, gap year planning West Bengal, free study plan West Bengal, college selection free, JENPAS advisory free, NexZen individual consultancy',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/consultancy/individual' },
+  openGraph: {
+    title: 'Free Individual Career Consultancy | NexZen Foundation',
+    description: 'Free one-on-one career sessions — NEET, WBJEE, JENPAS, college selection, gap year planning. Available remotely and in-person.',
+    url: 'https://www.nexzenfoundation.in/consultancy/individual',
+    siteName: 'NexZen Foundation',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Free Career Consultancy | NexZen Foundation', description: 'Free NEET, WBJEE, JENPAS, college selection sessions for West Bengal students.' },
   title: 'Individual Consultancy | NexZen Foundation',
   description: 'Personalised career mapping, college selection, exam strategy, board advisory and scholarship guidance for students and aspirants across West Bengal.',
 };

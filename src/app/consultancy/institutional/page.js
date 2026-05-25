@@ -6,6 +6,20 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Institutional Consultancy | School & College Development | NAAC | NexZen Foundation West Bengal',
+  description: 'NexZen Foundation provides institutional consultancy for schools and colleges in West Bengal — NAAC accreditation advisory, NEP 2020 implementation, infrastructure upgradation, branding, rankings, and digital transformation. Free baseline audit for all partner institutions.',
+  keywords: 'institutional consultancy West Bengal, NAAC accreditation advisory West Bengal, school development consultancy, college consultancy West Bengal, NEP 2020 school West Bengal, school infrastructure West Bengal, NexZen institutional',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/consultancy/institutional' },
+  openGraph: {
+    title: 'Institutional Consultancy | NexZen Foundation West Bengal',
+    description: 'NAAC advisory, NEP 2020, infrastructure, branding for schools and colleges. Free baseline audit included.',
+    url: 'https://www.nexzenfoundation.in/consultancy/institutional',
+    siteName: 'NexZen Foundation',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Institutional Consultancy | NexZen Foundation', description: 'NAAC, NEP 2020, school/college development in West Bengal. Free audit.' },
   title: 'Institutional Consultancy | NexZen Foundation',
   description: 'Digital upgradation, NAAC advisory, student counselling, safety compliance and institutional branding for schools and colleges across West Bengal.',
 };

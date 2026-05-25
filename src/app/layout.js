@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import './globals.css';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
@@ -52,40 +52,8 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
-        {/* JSON-LD — NGO Schema */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "NGO",
-            "name": "NexZen Foundation",
-            "alternateName": "NexZen",
-            "url": "https://www.nexzenfoundation.in",
-            "logo": "https://www.nexzenfoundation.in/images/logo.png",
-            "image": "https://www.nexzenfoundation.in/images/og-image.jpg",
-            "description": "NexZen Foundation is a registered charitable trust in West Bengal offering free career consultancy, scholarships, healthcare camps, and institutional development.",
-            "foundingDate": "2025",
-            "address": {
-              "@type": "PostalAddress",
-              "addressRegion": "West Bengal",
-              "addressCountry": "IN"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "email": "admin@nexzenfoundation.in",
-              "contactType": "customer service"
-            },
-            "sameAs": [
-              "https://www.nexzenfoundation.in"
-            ],
-            "knowsAbout": [
-              "Career Counselling", "Educational Consultancy", "Scholarship Guidance",
-              "Healthcare", "NEET Guidance", "WBJEE Strategy", "Institutional Development"
-            ],
-            "nonprofitStatus": "Nonprofit501c3",
-            "taxID": "AAFTN1149JF20261"
-          })}}
-        />
+        {/* JSON-LD Schemas — NGO, WebSite, Services */}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([{"@context":"https://schema.org","@type":["NGO","Organization"],"@id":"https://www.nexzenfoundation.in/#organization","name":"NexZen Foundation","legalName":"NexZen Foundation","alternateName":["NexZen","Nexzen Foundation West Bengal","NexZen NGO West Bengal"],"url":"https://www.nexzenfoundation.in","logo":{"@type":"ImageObject","url":"https://www.nexzenfoundation.in/images/logo.png","width":400,"height":400},"image":"https://www.nexzenfoundation.in/images/og-image.jpg","description":"NexZen Foundation is a registered charitable trust in West Bengal providing 100% free career consultancy, scholarships, community healthcare, NTSE examinations, and institutional development for underserved communities.","foundingDate":"2025","address":{"@type":"PostalAddress","addressLocality":"Kolkata","addressRegion":"West Bengal","addressCountry":"IN","postalCode":"700001"},"contactPoint":[{"@type":"ContactPoint","email":"admin@nexzenfoundation.in","contactType":"customer support","availableLanguage":["English","Bengali"]},{"@type":"ContactPoint","email":"donation@nexzenfoundation.in","contactType":"billing support"}],"taxID":"AAFTN1149JF20261","identifier":[{"@type":"PropertyValue","name":"Trust Registration","value":"IV-1901-01209-2025"},{"@type":"PropertyValue","name":"NGO Darpan ID","value":"WB/2025/0892907"},{"@type":"PropertyValue","name":"80G Certificate","value":"AAFTN1149JF20261"}],"areaServed":{"@type":"State","name":"West Bengal","addressCountry":"IN"},"knowsAbout":["Career Counselling","Educational Consultancy","Scholarship Guidance","Community Healthcare","NEET Guidance","WBJEE Strategy","Institutional Development","School Upgradation","NTSE Examination","Nursing College Advisory","Law College Guidance"]},{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.nexzenfoundation.in/#website","url":"https://www.nexzenfoundation.in","name":"NexZen Foundation","description":"Official website of NexZen Foundation — West Bengal NGO for free education consultancy, scholarships, and community welfare","inLanguage":["en-IN","bn-IN"],"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.nexzenfoundation.in/?q={search_term_string}"},"query-input":"required name=search_term_string"}}]) }} />
 
       </head>
       <body>
@@ -422,3 +390,4 @@ function ScrollRevealScript() {
 
   return null;
 }
+

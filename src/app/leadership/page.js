@@ -2,6 +2,20 @@ import Link from 'next/link';
 import { ShieldCheck, Landmark, Users, ArrowRight, Award } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Leadership | NexZen Foundation | Founders & Trustees West Bengal NGO',
+  description: 'Meet the leadership team of NexZen Foundation — the founders, trustees, and advisors driving free education consultancy, scholarships, healthcare, and community welfare across West Bengal.',
+  keywords: 'NexZen Foundation leadership, NGO founders West Bengal, NexZen trustees, charitable trust leadership India, NGO management West Bengal',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/leadership' },
+  openGraph: {
+    title: 'Leadership | NexZen Foundation West Bengal',
+    description: 'Meet the founders and trustees of NexZen Foundation driving community empowerment across West Bengal.',
+    url: 'https://www.nexzenfoundation.in/leadership',
+    siteName: 'NexZen Foundation',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Leadership | NexZen Foundation', description: 'Founders and trustees of West Bengal NGO NexZen Foundation.' },
   title: 'Leadership & Governance | NexZen Foundation',
   description: 'Meet the Board of Trustees guiding NexZen Foundation — experienced leaders from academia, law, and social service.',
 };

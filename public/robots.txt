@@ -2,6 +2,56 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /_next/
+Disallow: /api/create-subscription
+
+# Priority crawl directives
+Crawl-delay: 0
+
+# Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+# Yahoo Slurp
+User-agent: Slurp
+Allow: /
+Crawl-delay: 0
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 0
+
+# Yandex
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 0
+
+# Baidu
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 0
+
+# Facebook
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn
+User-agent: LinkedInBot
+Allow: /
+
+# WhatsApp
+User-agent: WhatsApp
+Allow: /
 
 Sitemap: https://www.nexzenfoundation.in/sitemap.xml
 Host: https://www.nexzenfoundation.in

@@ -1,6 +1,13 @@
 import { CheckCircle2, FileText, Gift, LineChart, Users } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Scholarships West Bengal | Merit-Based Financial Aid | NexZen Foundation',
+  description: 'NexZen Foundation scholarships for meritorious students from economically weaker sections in West Bengal. Financial aid, mentorship, and academic support for deserving students regardless of background.',
+  keywords: 'scholarship West Bengal, merit scholarship NGO West Bengal, financial aid students West Bengal, NexZen scholarship, scholarship poor students West Bengal, education fund West Bengal',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/programmes/scholarships' },
+  openGraph: { title: 'Scholarships | NexZen Foundation West Bengal', description: 'Merit-based financial aid and mentorship for deserving students across West Bengal.', url: 'https://www.nexzenfoundation.in/programmes/scholarships', siteName: 'NexZen Foundation', locale: 'en_IN', type: 'website' },
+  twitter: { card: 'summary_large_image', title: 'Scholarships | NexZen Foundation', description: 'Merit-based financial aid for West Bengal students.' },
   title: 'Scholarships | NexZen Foundation',
   description: 'Financial aid and mentorship for meritorious students from marginalized backgrounds.',
 };

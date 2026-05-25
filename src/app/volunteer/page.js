@@ -5,6 +5,20 @@ import {
 } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Volunteer with NexZen Foundation | NGO West Bengal | Career Counsellors, Doctors, Teachers',
+  description: 'Join NexZen Foundation as a volunteer in West Bengal. We need career counsellors, doctors, nurses, lawyers, teachers, and digital volunteers. Flexible hours, professional certificate, and real community impact.',
+  keywords: 'volunteer NGO West Bengal, volunteer career counsellor West Bengal, NGO volunteer Kolkata, doctor volunteer NGO West Bengal, teacher volunteer NGO, social work volunteer West Bengal, NexZen volunteer',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/volunteer' },
+  openGraph: {
+    title: 'Volunteer with NexZen Foundation | West Bengal NGO',
+    description: 'Become a volunteer — career counsellors, doctors, lawyers, teachers, and tech volunteers welcome. Flexible hours, official certificate.',
+    url: 'https://www.nexzenfoundation.in/volunteer',
+    siteName: 'NexZen Foundation',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Volunteer | NexZen Foundation West Bengal', description: 'Join as a volunteer — counsellors, doctors, teachers, lawyers, tech experts welcome.' },
   title: 'Volunteer | NexZen Foundation',
   description: 'Join NexZen Foundation as a volunteer. Contribute your skills to empower students, support healthcare camps, and build communities across West Bengal.',
 };

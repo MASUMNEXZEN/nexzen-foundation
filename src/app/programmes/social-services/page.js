@@ -1,6 +1,13 @@
 import { HeartHandshake, Utensils, Droplets, Home } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Social Services West Bengal | Food Distribution, Disaster Relief | NexZen Foundation',
+  description: 'NexZen Foundation social services: food distribution, winter relief, clean water projects, disaster relief, and community welfare across West Bengal. Supporting the most vulnerable communities.',
+  keywords: 'social services NGO West Bengal, food distribution NGO, disaster relief West Bengal, winter relief NGO West Bengal, clean water NGO West Bengal, community welfare West Bengal',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/programmes/social-services' },
+  openGraph: { title: 'Social Services | NexZen Foundation West Bengal', description: 'Food distribution, disaster relief, winter relief, and clean water projects across West Bengal.', url: 'https://www.nexzenfoundation.in/programmes/social-services', siteName: 'NexZen Foundation', locale: 'en_IN', type: 'website' },
+  twitter: { card: 'summary_large_image', title: 'Social Services | NexZen Foundation', description: 'Food, relief, and community welfare across West Bengal.' },
   title: 'Social Services | NexZen Foundation',
   description: 'Relief distribution, community welfare, and localized social support initiatives.',
 };

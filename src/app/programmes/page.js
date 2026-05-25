@@ -2,6 +2,20 @@ import Link from 'next/link';
 import { GraduationCap, HeartPulse, Building2, BookOpen, HeartHandshake, School, ArrowRight } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Programmes | Scholarships, Healthcare, NTSE, School Upgradation | NexZen Foundation West Bengal',
+  description: 'NexZen Foundation programmes: merit scholarships, free healthcare camps, IPEC professional colleges, Smart Bangla Classroom school upgradation, social services, and free career consultancy across West Bengal.',
+  keywords: 'NexZen Foundation programmes, NGO programmes West Bengal, scholarship programme West Bengal, healthcare camp NGO, school upgradation West Bengal, IPEC college West Bengal, social welfare programme West Bengal',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/programmes' },
+  openGraph: {
+    title: 'Programmes | NexZen Foundation West Bengal',
+    description: 'Scholarships, healthcare, IPEC colleges, Smart Bangla Classroom, social services — all our programmes in West Bengal.',
+    url: 'https://www.nexzenfoundation.in/programmes',
+    siteName: 'NexZen Foundation',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Programmes | NexZen Foundation', description: 'Scholarships, healthcare, school upgradation, and social services in West Bengal.' },
   title: 'Our Programmes | NexZen Foundation',
   description: 'Explore NexZen Foundation’s initiatives in education, healthcare, institutional support, and social welfare across West Bengal.',
 };

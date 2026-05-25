@@ -2,6 +2,20 @@ import Link from 'next/link';
 import { PieChart, Download, ShieldCheck, BadgeCheck, FileCheck, AlertOctagon } from 'lucide-react';
 
 export const metadata = {
+  metadataBase: new URL('https://www.nexzenfoundation.in'),
+  title: 'Financial Transparency | 80G Certified | NGO Darpan WB/2025/0892907 | NexZen Foundation',
+  description: 'Full financial transparency from NexZen Foundation. 80G certified (AAFTN1149JF20261), NGO Darpan listed (WB/2025/0892907), Trust Registration IV-1901-01209-2025. View fund allocation and annual disclosures.',
+  keywords: '80G certificate NGO West Bengal, NGO Darpan West Bengal, transparent NGO India, charitable trust accounts West Bengal, NexZen Foundation transparency, 80G tax exemption donation',
+  alternates: { canonical: 'https://www.nexzenfoundation.in/transparency' },
+  openGraph: {
+    title: 'Financial Transparency | NexZen Foundation',
+    description: '80G certified, NGO Darpan listed, fully audited. See how every rupee is used.',
+    url: 'https://www.nexzenfoundation.in/transparency',
+    siteName: 'NexZen Foundation',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: { card: 'summary_large_image', title: 'Transparency | NexZen Foundation', description: '80G certified, NGO Darpan listed, fully audited NGO.' },
   title: 'Financial Transparency | NexZen Foundation',
   description: 'NexZen Foundation is committed to full financial transparency. View our fund allocation and annual report disclosures.',
 };
