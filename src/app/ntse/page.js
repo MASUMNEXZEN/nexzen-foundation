@@ -7,6 +7,8 @@ import {
   School, Lightbulb, Target, Shield, Clock, FileText,
   Mail, Phone, Zap, Medal, TrendingUp, Globe
 } from 'lucide-react';
+import BreadcrumbJsonLd from '../components/BreadcrumbJsonLd';
+import NtseJsonLd from './NtseJsonLd';
 
 const TIERS = [
   { tier: '01', name: 'School Level', desc: 'Conducted at school premises by the Nodal Teacher', who: 'All enrolled & registered students', color: '#EEF2FF', border: '#6366F1', icon: <School size={22} color="#6366F1"/> },
@@ -559,6 +561,11 @@ export default function NTSEPage() {
           </p>
         </div>
       </section>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', path: '/' },
+        { name: 'NTSE 2026', path: '/ntse' }
+      ]} />
+      <NtseJsonLd />
     </>
   );
 }

@@ -6,6 +6,7 @@ import {
   FileText, Plus, Lock, CheckCircle
 } from 'lucide-react';
 import RazorpayButton from '../components/RazorpayButton';
+import BreadcrumbJsonLd from '../components/BreadcrumbJsonLd';
 
 const GOAL_AMOUNT   = 500000;
 const RAISED_AMOUNT = 187500;
@@ -249,6 +250,10 @@ export default function Donate() {
           </div>
         </div>
       </section>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', path: '/' },
+        { name: 'Donate', path: '/donate' }
+      ]} />
     </>
   );
 }

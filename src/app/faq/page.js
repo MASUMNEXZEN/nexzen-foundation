@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { ChevronDown, MessageSquare, GraduationCap, Building2, Heart, ShieldCheck, Plus } from 'lucide-react';
+import BreadcrumbJsonLd from '../components/BreadcrumbJsonLd';
 
 const categories = [
   {
@@ -123,6 +124,24 @@ export default function FAQPage() {
           </div>
         </div>
       </section>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', path: '/' },
+        { name: 'FAQ', path: '/faq' }
+      ]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "What is NexZen Foundation?", "acceptedAnswer": { "@type": "Answer", "text": "NexZen Foundation is a registered charitable trust (Reg: IV-1901-01209-2025) in West Bengal, India offering free career consultancy, scholarships, healthcare camps, and institutional development." } },
+          { "@type": "Question", "name": "Is NexZen Foundation legitimate and government-registered?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Registered under the Indian Trusts Act (IV-1901-01209-2025), listed on NGO Darpan (WB/2025/0892907), and holds 80G tax exemption certificate (AAFTN1149JF20261)." } },
+          { "@type": "Question", "name": "Is the career consultancy really free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — completely and unconditionally free. No session fees, no registration fees, no hidden charges for any student." } },
+          { "@type": "Question", "name": "Is my donation tax-deductible?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. NexZen Foundation holds 80G certificate AAFTN1149JF20261. Donations are eligible for 50% tax deduction under Section 80G of the Income Tax Act." } },
+          { "@type": "Question", "name": "What payment methods do you accept for donations?", "acceptedAnswer": { "@type": "Answer", "text": "We accept all UPI apps, credit/debit cards, net banking, and wallets through Razorpay. We also accept UPI direct transfers." } },
+          { "@type": "Question", "name": "What does individual consultancy cover?", "acceptedAnswer": { "@type": "Answer", "text": "Career mapping, college selection, board advisory, entrance exam strategy (NEET, WBJEE, JENPAS, CLAT), scholarship research, study plan design, gap year planning, and post-graduation advisory." } },
+          { "@type": "Question", "name": "How can I volunteer with NexZen Foundation?", "acceptedAnswer": { "@type": "Answer", "text": "Visit our Volunteer page at nexzenfoundation.in/volunteer and send an email to volunteer@nexzenfoundation.in with your background, skills, and availability." } },
+          { "@type": "Question", "name": "Does my school need to pay anything to partner for NTSE?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is absolutely zero financial risk to your school. The registration fee of Rs.249 per student is collected from parents. Your school bears no cost whatsoever." } }
+        ]
+      }) }} />
     </div>
   );
 }

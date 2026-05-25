@@ -1,9 +1,10 @@
-﻿import Link from 'next/link';
+import Link from 'next/link';
 import {
   GraduationCap, BookOpen, Brain, CheckCircle, ChevronRight,
   Stethoscope, Scale, FlaskConical, Microscope, Calculator, Heart,
   Mail, MessageSquare, ShieldCheck, Zap, Star, Users
 } from 'lucide-react';
+import BreadcrumbJsonLd from '../../components/BreadcrumbJsonLd';
 
 export const metadata = {
   metadataBase: new URL('https://www.nexzenfoundation.in'),
@@ -306,6 +307,23 @@ export default function IndividualConsultancy() {
           </div>
         </div>
       </section>
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', path: '/' },
+        { name: 'Consultancy', path: '/consultancy' },
+        { name: 'Individual Consultancy', path: '/consultancy/individual' }
+      ]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Free Individual Career Consultancy",
+        "description": "100% free one-on-one career consultancy for students in West Bengal covering NEET, WBJEE, JENPAS, CLAT guidance, college selection, gap year planning, scholarship research, and study plan design.",
+        "provider": { "@type": "Organization", "name": "NexZen Foundation", "url": "https://www.nexzenfoundation.in" },
+        "areaServed": { "@type": "State", "name": "West Bengal", "addressCountry": "IN" },
+        "serviceType": "Career Counselling",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR", "description": "Completely free \u2014 no fees of any kind" },
+        "url": "https://www.nexzenfoundation.in/consultancy/individual",
+        "audience": { "@type": "EducationalAudience", "educationalRole": "student" }
+      }) }} />
     </div>
   );
 }
