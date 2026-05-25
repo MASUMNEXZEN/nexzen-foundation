@@ -19,8 +19,7 @@ export default function Home() {
           style={{
             position: 'absolute', inset: 0,
             backgroundImage: 'url("/images/hero_school.png")',
-            backgroundSize: 'cover', backgroundPosition: 'center',
-            backgroundAttachment: 'fixed',
+            backgroundSize: 'cover', backgroundPosition: 'center top',
           }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(26,26,26,0.93) 0%, rgba(26,26,26,0.75) 100%)' }} />
@@ -114,7 +113,7 @@ export default function Home() {
           </div>
 
           <div className="reveal reveal-delay-2" style={{ position: 'relative' }}>
-            <img src="/images/hero_social.png" alt="NexZen Foundation — Community Outreach" style={{ width: '100%', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-lg)' }} />
+            <img src="/images/hero_social.png" alt="NexZen Foundation — Community Outreach" width="600" height="450" loading="lazy" style={{ width: '100%', borderRadius: 'var(--radius-xl)', boxShadow: 'var(--shadow-lg)' }} />
             <div className="floating-card-abs" style={{ position: 'absolute', bottom: '-1.25rem', left: '-1.25rem', background: 'white', padding: '1.25rem 1.5rem', borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-md)', zIndex: 2 }}>
               <div style={{ fontSize: '1.75rem', fontWeight: 800, color: 'var(--nex-red)', lineHeight: 1, fontFamily: 'var(--font-serif)' }}>2025</div>
               <div style={{ fontWeight: 600, color: 'var(--nex-charcoal)', fontSize: '0.85rem' }}>Foundation Year</div>

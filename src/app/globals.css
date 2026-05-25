@@ -2632,3 +2632,66 @@ body { -webkit-tap-highlight-color: transparent; overscroll-behavior-x: none; }
 [data-theme="dark"] .footer-bottom { color: #6b7280; }
 [data-theme="dark"] .footer-text { color: #6b7280; }
 [data-theme="dark"] .footer-tagline { color: #6b7280; }
+
+/* =====================================================
+   PERFORMANCE — Image & Layout Optimizations
+   ===================================================== */
+
+/* Lazy load below-fold images */
+img:not([fetchpriority="high"]) {
+  loading: lazy;
+  content-visibility: auto;
+}
+
+/* Hero background images — content-visibility optimization */
+.page-hero {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 500px;
+}
+
+/* Prevent layout shift on images */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Font display optimization */
+@font-face {
+  font-display: swap;
+}
+
+/* Reduce paint complexity on scroll */
+.navbar {
+  will-change: transform;
+  contain: layout style;
+}
+
+/* Stats strip — avoid reflow */
+.stats-strip {
+  contain: layout style paint;
+}
+
+/* Cards — GPU compositing for animations */
+.card {
+  will-change: auto;
+  transform: translateZ(0);
+}
+
+/* Defer non-critical animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Critical above-fold text rendering */
+h1, h2 {
+  text-rendering: optimizeSpeed;
+}
+
+/* Optimize body text */
+p, li, span {
+  text-rendering: optimizeSpeed;
+}

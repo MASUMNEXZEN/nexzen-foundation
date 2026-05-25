@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 import './globals.css';
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
@@ -44,13 +44,24 @@ export default function RootLayout({ children }) {
         <meta name="twitter:description" content="Free career consultancy, scholarships, healthcare camps. 80G certified NGO, West Bengal." />
         <meta name="twitter:image" content="https://www.nexzenfoundation.in/images/og-image.jpg" />
 
-        {/* Favicon */}
-        <link rel="icon" href="/images/logo.png" type="image/png" />
+        {/* Favicon — small icon */}
+        <link rel="icon" href="/images/logo.png" type="image/png" sizes="32x32" />
         <link rel="apple-touch-icon" href="/images/logo.png" />
 
-        {/* Preconnect for performance */}
+        {/* Critical resource hints — fix render blocking & LCP */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://checkout.razorpay.com" />
+        <link rel="dns-prefetch" href="https://api.razorpay.com" />
+        <link rel="preconnect" href="https://image-optimization.nexzenfoundation.in" crossOrigin="anonymous" />
+
+        {/* Preload hero image — fixes 21.8s LCP */}
+        <link rel="preload" as="image" href="/images/hero_school.png" fetchPriority="high" />
+
+        {/* Google Fonts — async load with font-display:swap (fixes render blocking) */}
+        <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" media="print" onLoad="this.media='all'" />
+        <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" /></noscript>
 
         {/* JSON-LD Schemas — NGO, WebSite, Services */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([{"@context":"https://schema.org","@type":["NGO","Organization"],"@id":"https://www.nexzenfoundation.in/#organization","name":"NexZen Foundation","legalName":"NexZen Foundation","alternateName":["NexZen","Nexzen Foundation West Bengal","NexZen NGO West Bengal"],"url":"https://www.nexzenfoundation.in","logo":{"@type":"ImageObject","url":"https://www.nexzenfoundation.in/images/logo.png","width":400,"height":400},"image":"https://www.nexzenfoundation.in/images/og-image.jpg","description":"NexZen Foundation is a registered charitable trust in West Bengal providing 100% free career consultancy, scholarships, community healthcare, NTSE examinations, and institutional development for underserved communities.","foundingDate":"2025","address":{"@type":"PostalAddress","addressLocality":"Kolkata","addressRegion":"West Bengal","addressCountry":"IN","postalCode":"700001"},"contactPoint":[{"@type":"ContactPoint","email":"admin@nexzenfoundation.in","contactType":"customer support","availableLanguage":["English","Bengali"]},{"@type":"ContactPoint","email":"donation@nexzenfoundation.in","contactType":"billing support"}],"taxID":"AAFTN1149JF20261","identifier":[{"@type":"PropertyValue","name":"Trust Registration","value":"IV-1901-01209-2025"},{"@type":"PropertyValue","name":"NGO Darpan ID","value":"WB/2025/0892907"},{"@type":"PropertyValue","name":"80G Certificate","value":"AAFTN1149JF20261"}],"areaServed":{"@type":"State","name":"West Bengal","addressCountry":"IN"},"knowsAbout":["Career Counselling","Educational Consultancy","Scholarship Guidance","Community Healthcare","NEET Guidance","WBJEE Strategy","Institutional Development","School Upgradation","NTSE Examination","Nursing College Advisory","Law College Guidance"]},{"@context":"https://schema.org","@type":"WebSite","@id":"https://www.nexzenfoundation.in/#website","url":"https://www.nexzenfoundation.in","name":"NexZen Foundation","description":"Official website of NexZen Foundation — West Bengal NGO for free education consultancy, scholarships, and community welfare","inLanguage":["en-IN","bn-IN"],"potentialAction":{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.nexzenfoundation.in/?q={search_term_string}"},"query-input":"required name=search_term_string"}}]) }} />
