@@ -13,4 +13,5 @@
     type: 'website',
   },
   twitter: { card: 'summary_large_image', title: 'FAQ | NexZen Foundation', description: 'Answers about free consultancy, 80G donations, scholarships, and volunteering.' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

@@ -13,4 +13,5 @@
     type: 'website',
   },
   twitter: { card: 'summary_large_image', title: 'Gallery | NexZen Foundation', description: 'Events, health camps, and community work across West Bengal.' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

@@ -1,4 +1,4 @@
-import { HeartHandshake, Utensils, Droplets, Home } from 'lucide-react';
+﻿import { HeartHandshake, Utensils, Droplets, Home } from 'lucide-react';
 
 export const metadata = {
   metadataBase: new URL('https://www.nexzenfoundation.in'),
@@ -105,3 +105,4 @@ const iconWrapper = {
   alignItems: 'center',
   justifyContent: 'center',
 };
+

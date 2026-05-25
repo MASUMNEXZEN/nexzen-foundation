@@ -13,4 +13,5 @@
     type: 'website',
   },
   twitter: { card: 'summary_large_image', title: 'Free Career Consultancy West Bengal | NexZen Foundation', description: 'NEET, WBJEE, JENPAS, CLAT, nursing, law, engineering — 100% free for all West Bengal students.' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

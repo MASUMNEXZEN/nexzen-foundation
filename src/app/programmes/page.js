@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { GraduationCap, HeartPulse, Building2, BookOpen, HeartHandshake, School, ArrowRight } from 'lucide-react';
 
 export const metadata = {
@@ -172,3 +172,4 @@ export default function Programmes() {
     </>
   );
 }
+

@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { ShieldCheck, Landmark, Users, ArrowRight, Award } from 'lucide-react';
 
 export const metadata = {
@@ -154,3 +154,4 @@ function GovCard({ icon, title, text, delay, color }) {
     </div>
   );
 }
+

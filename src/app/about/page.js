@@ -4,21 +4,19 @@ import { BadgeCheck, ShieldCheck, FileText, Eye, Lightbulb, Heart, Globe, BookOp
 export const metadata = {
   metadataBase: new URL('https://www.nexzenfoundation.in'),
   title: 'About NexZen Foundation | Registered NGO West Bengal | Trust Reg IV-1901-01209-2025',
-  description: 'NexZen Foundation is a registered charitable trust (Reg: IV-1901-01209-2025) in West Bengal. Learn about our mission to empower communities through free education consultancy, scholarships, healthcare, and social welfare across West Bengal.',
-  keywords: 'NexZen Foundation about, NGO West Bengal, charitable trust West Bengal, registered NGO India, education NGO West Bengal, free consultancy NGO, 80G certified NGO',
+  description: 'NexZen Foundation is a registered charitable trust (Reg: IV-1901-01209-2025) established in West Bengal. Empowering communities through free education consultancy, scholarships, healthcare camps, and social welfare across West Bengal since 2025.',
+  keywords: 'NexZen Foundation about, NGO West Bengal, charitable trust West Bengal, registered NGO India, education NGO West Bengal, free consultancy NGO, 80G certified NGO, NexZen Foundation history',
   alternates: { canonical: 'https://www.nexzenfoundation.in/about' },
   openGraph: {
     title: 'About NexZen Foundation | Registered NGO West Bengal',
-    description: 'Learn about NexZen Foundation — a registered charitable trust empowering communities through free education, healthcare, and social welfare in West Bengal.',
+    description: 'Learn about NexZen Foundation - a registered charitable trust empowering communities through free education, healthcare, and social welfare in West Bengal.',
     url: 'https://www.nexzenfoundation.in/about',
     siteName: 'NexZen Foundation',
     locale: 'en_IN',
     type: 'website',
   },
   twitter: { card: 'summary_large_image', title: 'About NexZen Foundation | NGO West Bengal', description: 'Registered charitable trust empowering West Bengal communities through education and healthcare.' },
-  //SPLIT//
-  title: 'About NexZen Foundation | Who We Are',
-  description: 'Established August 2025, NexZen Foundation is a registered charitable trust in Murshidabad, West Bengal, empowering first-generation learners and rural communities.',
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
 };
 
 export default function About() {
@@ -194,4 +192,5 @@ function ValueItem({ num, title, text, color }) {
     </div>
   );
 }
+
 

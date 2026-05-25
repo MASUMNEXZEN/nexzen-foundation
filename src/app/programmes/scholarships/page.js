@@ -1,4 +1,4 @@
-import { CheckCircle2, FileText, Gift, LineChart, Users } from 'lucide-react';
+﻿import { CheckCircle2, FileText, Gift, LineChart, Users } from 'lucide-react';
 
 export const metadata = {
   metadataBase: new URL('https://www.nexzenfoundation.in'),
@@ -142,3 +142,4 @@ const ntseCard = {
   border: '1px solid rgba(255,255,255,0.2)',
   borderRadius: 'var(--radius-md)',
 };
+

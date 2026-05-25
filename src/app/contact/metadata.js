@@ -13,4 +13,5 @@
     type: 'website',
   },
   twitter: { card: 'summary_large_image', title: 'Contact NexZen Foundation', description: 'Get in touch for free career counselling, school partnerships, or donation queries.' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

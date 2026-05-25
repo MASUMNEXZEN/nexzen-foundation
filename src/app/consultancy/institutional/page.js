@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import {
   Building2, Laptop, Brain, ClipboardList, ShieldCheck, Award,
   CheckCircle, ChevronRight, Mail, MessageSquare, BarChart3,
@@ -287,3 +287,4 @@ export default function InstitutionalConsultancy() {
     </div>
   );
 }
+

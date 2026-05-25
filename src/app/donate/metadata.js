@@ -13,4 +13,5 @@
     type: 'website',
   },
   twitter: { card: 'summary_large_image', title: 'Donate | NexZen Foundation | 80G Tax Benefit', description: '80G certified NGO. 50% tax deduction. Support education & healthcare in West Bengal.' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };

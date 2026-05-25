@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import { PieChart, Download, ShieldCheck, BadgeCheck, FileCheck, AlertOctagon } from 'lucide-react';
 
 export const metadata = {
@@ -154,3 +154,4 @@ function ReportCard({ year, status, note }) {
     </div>
   );
 }
+

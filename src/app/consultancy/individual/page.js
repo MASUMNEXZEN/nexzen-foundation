@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import {
   GraduationCap, BookOpen, Brain, CheckCircle, ChevronRight,
   Stethoscope, Scale, FlaskConical, Microscope, Calculator, Heart,
@@ -316,3 +316,4 @@ const bulletRow  = { display: 'flex', gap: '0.6rem', alignItems: 'flex-start' };
 const bulletText = { fontSize: '0.9rem', color: 'var(--nex-grey-700)', lineHeight: 1.6 };
 const thStyle = { padding: '0.75rem 1rem', textAlign: 'left', fontWeight: 700, fontSize: '0.85rem', color: 'var(--nex-charcoal)', borderBottom: '2px solid #BFDBFE' };
 const tdStyle = { padding: '0.7rem 1rem', fontSize: '0.875rem', color: 'var(--nex-grey-700)', borderBottom: '1px solid var(--nex-grey-100)', lineHeight: 1.6 };
+

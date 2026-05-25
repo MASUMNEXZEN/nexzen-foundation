@@ -13,4 +13,5 @@
     type: 'website',
   },
   twitter: { card: 'summary_large_image', title: 'NTSE 2026 West Bengal | NexZen Foundation', description: '4-tier merit scholarship exam for Classes II-IX. Bilingual. Scholarships for top performers.' },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
