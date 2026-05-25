@@ -5,7 +5,8 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import {
   GraduationCap, Building2, BookOpen, HeartPulse, HeartHandshake, School,
-  Menu, X, ChevronUp, ShieldCheck, BadgeCheck, FileText, Moon, Sun, Heart, ArrowRight
+  Menu, X, ChevronUp, ShieldCheck, BadgeCheck, FileText, Moon, Sun, Heart, ArrowRight,
+  Newspaper, Image as ImageIcon, Users
 } from 'lucide-react';
 
 export default function RootLayout({ children }) {
@@ -278,13 +279,42 @@ function Navbar() {
           <Link href="/ntse" className={`nav-link ${pathname === '/ntse' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center' }}>
             <span style={{ background: 'var(--nex-red)', color: 'white', fontSize: '0.68rem', fontWeight: 800, padding: '3px 10px', borderRadius: '50px', letterSpacing: '0.5px', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>NTSE 2026</span>
           </Link>
-          <Link href="/leadership" className={`nav-link ${pathname === '/leadership' ? 'active' : ''}`}>Leadership</Link>
-          <Link href="/gallery" className={`nav-link ${pathname === '/gallery' ? 'active' : ''}`}>Gallery</Link>
-          <Link href="/news" className={`nav-link ${pathname === '/news' ? 'active' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-            <span>News</span>
-            <span style={{ background: 'linear-gradient(135deg,#2ecc71,#27ae60)', color: 'white', fontSize: '0.6rem', fontWeight: 800, padding: '2px 6px', borderRadius: '50px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>NEW</span>
-          </Link>
-          <Link href="/transparency" className={`nav-link ${pathname === '/transparency' ? 'active' : ''}`}>Transparency</Link>
+
+          {/* More dropdown — News, Gallery, Leadership, Transparency */}
+          <div className="nav-item-dropdown">
+            <span className={`nav-link ${['/news','/gallery','/leadership','/transparency'].some(p => pathname === p) ? 'active' : ''}`} style={{ cursor: 'pointer' }}>More</span>
+            <div className="nav-dropdown-menu">
+              <Link href="/news" className="dropdown-item">
+                <div className="dropdown-item-icon"><Newspaper size={18} /></div>
+                <div>
+                  <div className="dropdown-item-title">News <span style={{ background: '#2ecc71', color: 'white', fontSize: '0.6rem', fontWeight: 800, padding: '1px 5px', borderRadius: '20px', marginLeft: '4px', verticalAlign: 'middle' }}>NEW</span></div>
+                  <div className="dropdown-item-desc">Press & Media Coverage</div>
+                </div>
+              </Link>
+              <Link href="/gallery" className="dropdown-item">
+                <div className="dropdown-item-icon"><ImageIcon size={18} /></div>
+                <div>
+                  <div className="dropdown-item-title">Gallery</div>
+                  <div className="dropdown-item-desc">Events & Activities</div>
+                </div>
+              </Link>
+              <Link href="/leadership" className="dropdown-item">
+                <div className="dropdown-item-icon"><Users size={18} /></div>
+                <div>
+                  <div className="dropdown-item-title">Leadership</div>
+                  <div className="dropdown-item-desc">Founders & Trustees</div>
+                </div>
+              </Link>
+              <Link href="/transparency" className="dropdown-item">
+                <div className="dropdown-item-icon"><ShieldCheck size={18} /></div>
+                <div>
+                  <div className="dropdown-item-title">Transparency</div>
+                  <div className="dropdown-item-desc">80G · NGO Darpan · Accounts</div>
+                </div>
+              </Link>
+            </div>
+          </div>
+
           <Link href="/contact" className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}>Contact</Link>
         </div>
 
