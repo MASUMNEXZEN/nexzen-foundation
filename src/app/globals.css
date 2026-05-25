@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,700&display=swap');
 
 :root {
   /* Brand Palette */
@@ -476,13 +476,13 @@ img { max-width: 100%; height: auto; display: block; }
 
 .nav-dropdown-menu {
   position: absolute;
-  top: calc(100% + 12px);
+  top: 100%;              /* flush — no gap */
   left: 50%;
   transform: translateX(-50%) translateY(-8px);
   background: white;
   border-radius: var(--radius-xl);
   box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.04);
-  padding: 1.25rem;
+  padding: 1.75rem 1.25rem 1.25rem; /* extra top padding replaces the gap visually */
   min-width: 680px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -490,8 +490,18 @@ img { max-width: 100%; height: auto; display: block; }
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: all 0.25s var(--ease-out);
+  transition: all 0.22s var(--ease-out);
   z-index: 100;
+}
+
+/* Invisible bridge — fills the gap between trigger and menu */
+.nav-dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -16px;
+  left: 0;
+  right: 0;
+  height: 16px;
 }
 
 .nav-item-dropdown:hover .nav-dropdown-menu {
